@@ -13,6 +13,7 @@ export default defineConfig({
     })
   ],
   server: {
+    host: '0.0.0.0', // 支持 localhost 和 IP 地址访问
     port: 3000,
     open: true
   }
