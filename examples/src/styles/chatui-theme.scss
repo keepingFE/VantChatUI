@@ -1,0 +1,58 @@
+// File: examples/src/styles/chatui-theme.scss
+// ChatUI 高仿主题样式
+
+// ========== 颜色系统 ==========
+// 主题色
+$primary-color: #2b6de5;        // 阿里蓝 (我方气泡背景)
+$text-on-primary: #ffffff;      // 我方气泡文字颜色
+
+// 对方气泡
+$bubble-left-bg: #ffffff;       // 对方气泡背景 (白色)
+$bubble-left-text: #000000;     // 对方气泡文字颜色 (黑色)
+
+// 系统消息
+$system-text-color: #999999;    // 系统消息文字颜色 (灰色)
+
+// 背景色
+$chat-bg: #f7f8fa;              // 聊天容器背景色
+$composer-container-bg: #ffffff; // 输入区容器背景
+
+// 输入框
+$composer-bg: #f2f4f5;          // 输入框背景色
+$composer-border-color: #ebedf0; // 输入区上边框颜色
+
+// 图标颜色
+$icon-color: #969799;           // 图标默认颜色
+
+// ========== 尺寸系统 ==========
+// 圆角
+$bubble-radius: 12px;           // 气泡常规圆角
+$bubble-sharp-radius: 2px;      // 气泡尖角圆角
+$composer-border-radius: 20px;  // 输入框圆角
+$avatar-radius: 50%;            // 头像圆角 (圆形)
+$image-radius: 8px;             // 图片消息圆角
+
+// 尺寸
+$avatar-size: 40px;             // 头像尺寸
+$icon-size: 24px;               // 图标尺寸
+$image-max-width: 200px;        // 图片消息最大宽度
+$image-max-height: 200px;       // 图片消息最大高度
+$bubble-max-width: 70%;         // 气泡最大宽度
+
+// 间距
+$message-gap: 12px;             // 消息之间的间距
+$avatar-gap: 8px;               // 头像与气泡的间距
+$icon-gap: 8px;                 // 图标间距
+$container-padding: 16px;       // 容器内边距
+$bubble-padding-v: 10px;        // 气泡垂直内边距
+$bubble-padding-h: 12px;        // 气泡水平内边距
+$composer-padding: 8px 12px;    // 输入区内边距
+
+// 字体
+$font-size-base: 15px;          // 基础字体大小
+$font-size-small: 12px;         // 小字体 (系统消息)
+$line-height-base: 1.5;         // 基础行高
+
+// 阴影
+$bubble-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); // 气泡阴影
+
