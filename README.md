@@ -1,4 +1,4 @@
-# ChatVant
+# VantChatUI
 
 ChatVant is a lightweight, mobile-first chat UI component library built with **Vue 3** and **Vant 4**. It provides a set of flexible components to help you build chat interfaces quickly, especially suitable for AI chat applications.
 
