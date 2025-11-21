@@ -3,7 +3,7 @@
   <Chat ref="chatRef">
     <!-- 顶部导航栏 -->
     <template #navbar>
-      <van-nav-bar title="ChatVant Demo" fixed />
+      <van-nav-bar title="Vant Chat UI" fixed />
     </template>
 
     <!-- 消息列表 -->
@@ -17,7 +17,8 @@
 
     <!-- 底部输入区 -->
     <template #composer>
-      <Composer @send="handleSend" @upload="handleUpload" @upload-error="handleUploadError" />
+      <Composer :quick-replies="quickReplies" @send="handleSend" @upload="handleUpload"
+        @upload-error="handleUploadError" />
     </template>
   </Chat>
 </template>
@@ -58,6 +59,14 @@ const currentUser = {
   avatar: 'https://img.yzcdn.cn/vant/logo.png',
   name: '我'
 }
+
+// 快捷回复列表
+const quickReplies = ref([
+  { text: '联系人工服务', icon: 'service-o' },
+  { text: '短语1' },
+  { text: '短语2' },
+  { text: '短语3' }
+])
 
 // Chat 组件引用
 const chatRef = ref(null)
@@ -195,17 +204,25 @@ const handleUpload = (files) => {
         duration: 1500
       })
     } else {
-      // 文档文件：显示文件名和大小
+      // 文档文件：显示文件卡片
       const fileSizeKB = (file.size / 1024).toFixed(2)
       const fileSizeMB = (file.size / 1024 / 1024).toFixed(2)
       const sizeText = file.size > 1024 * 1024 ? `${fileSizeMB} MB` : `${fileSizeKB} KB`
 
+      // 创建文件 URL（用于下载）
+      const fileUrl = URL.createObjectURL(file)
+
       const fileMsg = {
         _id: `${Date.now()}_${Math.random()}`,
-        type: 'text',
-        content: `📄 ${file.name}\n大小: ${sizeText}`,
+        type: 'file',
         position: 'right',
-        user: currentUser
+        user: currentUser,
+        file: {
+          name: file.name,
+          size: sizeText,
+          url: fileUrl,
+          downloadable: true
+        }
       }
       messages.value.push(fileMsg)
 
