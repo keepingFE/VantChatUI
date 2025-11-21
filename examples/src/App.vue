@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch, nextTick } from 'vue'
+import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { showToast } from 'vant'
 import { Chat, Message, Composer, Typing, Thinking, useAutoScroll } from '../../packages/src/index.js'
 
@@ -73,24 +73,35 @@ const isTyping = ref(false)
 
 // 使用自动滚动 Hook
 onMounted(() => {
-  if (chatRef.value && chatRef.value.scrollRef) {
-    autoScrollInstance = useAutoScroll(chatRef.value.scrollRef, messages)
-    // 初始加载时滚动到底部
-    setTimeout(() => {
-      autoScrollInstance.scrollToBottom(false)
-    }, 100)
+  // 确保子组件已渲染后获取 scrollRef
+  nextTick(() => {
+    if (chatRef.value && chatRef.value.scrollRef) {
+      console.log('[App.vue] Initializing useAutoScroll', {
+        chatRef: chatRef.value,
+        scrollRef: chatRef.value.scrollRef,
+        scrollRefValue: chatRef.value.scrollRef.value
+      })
+      // 传递 scrollRef（ref 对象），而不是 scrollRef.value
+      autoScrollInstance = useAutoScroll(chatRef.value.scrollRef, messages)
+      // 初始加载时滚动到底部（不平滑）
+      setTimeout(() => {
+        if (autoScrollInstance) {
+          autoScrollInstance.scrollToBottom(false)
+        }
+      }, 100)
+    } else {
+      console.error('[App.vue] Failed to initialize useAutoScroll', {
+        chatRef: chatRef.value,
+        hasScrollRef: chatRef.value?.scrollRef
+      })
+    }
+  })
+})
 
-    // 监听思考中和打字状态，自动滚动到底部
-    watch([isThinking, isTyping], () => {
-      if (autoScrollInstance) {
-        // 使用 nextTick 确保 DOM 已更新
-        nextTick(() => {
-          setTimeout(() => {
-            autoScrollInstance.scrollToBottom()
-          }, 50)
-        })
-      }
-    })
+// 组件卸载前清理资源
+onBeforeUnmount(() => {
+  if (autoScrollInstance && autoScrollInstance.cleanup) {
+    autoScrollInstance.cleanup()
   }
 })
 
