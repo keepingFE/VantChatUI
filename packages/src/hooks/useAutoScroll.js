@@ -10,16 +10,6 @@ import { watch, nextTick } from 'vue'
 export function useAutoScroll(scrollRef, dataList) {
   // 判断 scrollRef 是 ref 对象还是直接的 DOM 元素
   const isRefObject = scrollRef && typeof scrollRef === 'object' && 'value' in scrollRef
-
-  console.log('[useAutoScroll] Initialized with', {
-    scrollRef,
-    scrollRefValue: scrollRef?.value,
-    scrollRefType: typeof scrollRef,
-    isRefObject,
-    isDOMElement: scrollRef instanceof HTMLElement,
-    dataList: dataList?.value?.length || 0
-  })
-
   // 定时器
   let imgTimer = null
   let typeTimer = null
@@ -51,44 +41,20 @@ export function useAutoScroll(scrollRef, dataList) {
    */
   const performScroll = (smooth = true) => {
     const el = getElement()
-
-    console.log('[useAutoScroll] performScroll - checking element', {
-      el,
-      hasElement: !!el,
-      scrollHeight: el?.scrollHeight,
-      clientHeight: el?.clientHeight
-    })
-
     if (!el) {
-      console.warn('[useAutoScroll] DOM element is null')
       return
     }
     const scrollHeight = el.scrollHeight
     const clientHeight = el.clientHeight
-    const currentScrollTop = el.scrollTop
     const maxScrollTop = scrollHeight - clientHeight
-
-    console.log('[useAutoScroll] performScroll details', {
-      smooth,
-      scrollHeight,
-      clientHeight,
-      currentScrollTop,
-      maxScrollTop,
-      needScroll: maxScrollTop > 0
-    })
-
     if (maxScrollTop <= 0) {
-      console.log('[useAutoScroll] No need to scroll, content fits in viewport')
       return // 不需要滚动
     }
-
     if (smooth) {
       el.scrollTo({ top: maxScrollTop, behavior: 'smooth' })
     } else {
       el.scrollTop = maxScrollTop
     }
-
-    console.log('[useAutoScroll] ✅ Scrolled to', el.scrollTop, '/', maxScrollTop)
   }
 
   /**
@@ -96,12 +62,9 @@ export function useAutoScroll(scrollRef, dataList) {
    * @param {boolean} smooth - 是否平滑滚动，默认 true
    */
   const scrollToBottom = (smooth = true) => {
-    console.log('[useAutoScroll] scrollToBottom called')
-
     // 立即滚动 - 使用 requestAnimationFrame 确保 DOM 已更新
     nextTick(() => {
       requestAnimationFrame(() => {
-        console.log('[useAutoScroll] Immediate scroll (nextTick + rAF)')
         performScroll(smooth)
       })
     })
@@ -122,7 +85,6 @@ export function useAutoScroll(scrollRef, dataList) {
     typeTimer = setTimeout(() => {
       nextTick(() => {
         requestAnimationFrame(() => {
-          console.log('[useAutoScroll] Delayed scroll (350ms)')
           performScroll(false)
         })
       })
@@ -133,7 +95,6 @@ export function useAutoScroll(scrollRef, dataList) {
     longDelayTimer = setTimeout(() => {
       nextTick(() => {
         requestAnimationFrame(() => {
-          console.log('[useAutoScroll] Delayed scroll (600ms)')
           performScroll(false)
         })
       })
@@ -176,12 +137,8 @@ export function useAutoScroll(scrollRef, dataList) {
   const setupMutationObserver = () => {
     const el = getElement()
     if (!el) {
-      console.warn('[useAutoScroll] Cannot setup MutationObserver, element is null')
       return
     }
-
-    console.log('[useAutoScroll] Setting up MutationObserver on', el)
-
     // 创建 MutationObserver 实例（带防抖）
     mutationObserver = new MutationObserver(() => {
       // 防抖处理，避免频繁触发
@@ -202,14 +159,12 @@ export function useAutoScroll(scrollRef, dataList) {
 
     // 开始观察
     mutationObserver.observe(el, config)
-    console.log('[useAutoScroll] MutationObserver started')
   }
 
   // 监听消息列表变化，自动滚动到底部
   watchStop = watch(
     dataList,
     () => {
-      console.debug('[useAutoScroll] dataList changed, scrolling to bottom')
       scrollToBottom(true)
     },
     { deep: true }
