@@ -2,7 +2,7 @@
 <template>
   <div class="composer-container">
     <!-- 左侧语音图标 -->
-    <div class="composer-icon">
+    <div v-if="showVoice" class="composer-icon">
       <van-icon name="volume-o" size="24" color="#969799" />
     </div>
 
@@ -15,7 +15,7 @@
     <!-- 右侧图标区域 -->
     <div class="composer-actions">
       <!-- 表情图标 -->
-      <div class="composer-icon" @click="handleEmojiClick">
+      <div v-if="showEmoji" class="composer-icon" @click="handleEmojiClick">
         <van-icon name="smile-o" size="24" color="#969799" />
       </div>
 
@@ -45,6 +45,16 @@ const props = defineProps({
   modelValue: {
     type: String,
     default: ''
+  },
+  // 是否显示语音按钮
+  showVoice: {
+    type: Boolean,
+    default: true
+  },
+  // 是否显示表情按钮
+  showEmoji: {
+    type: Boolean,
+    default: true
   }
 })
 

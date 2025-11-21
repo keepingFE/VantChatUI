@@ -25,11 +25,12 @@
         </div>
 
         <!-- 图片消息 -->
-        <div v-else-if="msg.type === 'image'" class="message-image" @click="handleImagePreview">
-          <van-image :src="msg.content" fit="cover" :style="{
+        <div v-else-if="msg.type === 'image'" class="message-image-bubble" :class="[`bubble-${msg.position}`]"
+          @click="handleImagePreview">
+          <van-image :src="msg.content" fit="contain" :style="{
             maxWidth: '200px',
             maxHeight: '200px',
-            borderRadius: '8px'
+            borderRadius: '4px'
           }">
             <template #error>
               <div class="image-error">加载失败</div>
@@ -193,11 +194,12 @@ const handleImagePreview = () => {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-// 我方气泡 (蓝底白字，右上角尖角)
+// 我方气泡 (白底黑字，右上角尖角)
 .bubble-right {
-  background: #2b6de5;
-  color: #ffffff;
+  background: #ffffff;
+  color: #000000;
   border-radius: 12px 2px 12px 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 // ========== 打字机光标 ==========
@@ -225,10 +227,23 @@ const handleImagePreview = () => {
 }
 
 // ========== 图片消息 ==========
-.message-image {
+.message-image-bubble {
   cursor: pointer;
+  padding: 4px;
   border-radius: 8px;
   overflow: hidden;
+
+  // 对方图片气泡 (白底)
+  &.bubble-left {
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  // 我方图片气泡 (白底)
+  &.bubble-right {
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .image-error {
@@ -240,5 +255,6 @@ const handleImagePreview = () => {
   background: #f7f8fa;
   color: #999;
   font-size: 14px;
+  border-radius: 4px;
 }
 </style>
