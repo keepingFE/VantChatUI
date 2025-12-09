@@ -2,35 +2,94 @@
 
 ChatVant is a lightweight, mobile-first chat UI component library built with **Vue 3** and **Vant 4**. It provides a set of flexible components to help you build chat interfaces quickly, especially suitable for AI chat applications.
 
-## Features
+ChatVant 是一个基于 **Vue 3** 和 **Vant 4** 构建的轻量级、移动优先的聊天 UI 组件库。它提供了一套灵活的组件，帮助你快速构建聊天界面，特别适合 AI 聊天应用。
 
-- 🚀 **Vue 3 & Vant 4**: Built on modern tech stack.
-- 📱 **Mobile First**: Designed for mobile web applications.
-- 💬 **Rich Components**: Includes Chat container, Message bubbles, Composer input, Typing indicators, and more.
-- 🤖 **AI Ready**: Built-in `Thinking` and `Typing` components, perfect for LLM chat interfaces.
-- 🎨 **Customizable**: Flexible slots and props for deep customization.
-- 📜 **Auto Scroll**: Built-in hooks for smooth auto-scrolling behavior.
+## Features | 特性
 
-## Components
+- 🚀 **Vue 3 & Vant 4**: Built on modern tech stack | 基于现代技术栈构建
+- 📱 **Mobile First**: Designed for mobile web applications | 专为移动端 Web 应用设计
+- 💬 **Rich Components**: Includes Chat container, Message bubbles, Composer input, Typing indicators, and more | 丰富的组件：包含聊天容器、消息气泡、输入框、打字指示器等
+- 🤖 **AI Ready**: Built-in `Thinking` and `Typing` components, perfect for LLM chat interfaces | AI 就绪：内置思考和打字组件，完美适配 LLM 聊天界面
+- 🎨 **Customizable**: Flexible slots and props for deep customization | 可定制：灵活的插槽和属性支持深度定制
+- 📜 **Auto Scroll**: Built-in hooks for smooth auto-scrolling behavior | 自动滚动：内置平滑自动滚动行为的 Hooks
 
-- **Chat**: The main container for the chat interface.
-- **Message**: Renders chat messages (text, image, etc.) with support for different positions (left/right).
-- **Composer**: The input area with support for text input, file uploads, and emoji picker.
-- **Typing**: A typing indicator bubble.
-- **Thinking**: A "thinking" state indicator, useful for AI processing states.
-- **EmojiPicker**: An emoji picker component.
+## Components | 组件
 
-## Getting Started
+### Chat Components | 聊天组件
 
-### Prerequisites
+- **Chat**: Main container component for chat interface, manages message list and input area layout  
+  聊天界面的主容器组件，管理消息列表和输入区域布局
+- **Message**: Message bubble component, supports text, images and other message types with left/right positioning  
+  消息气泡组件，支持文本、图片等多种消息类型，可设置左右位置
+- **Composer**: Message input component with support for text input, file uploads, and emoji selection  
+  消息输入组件，支持文本输入、文件上传和表情选择
+- **SystemMessage**: System message component for displaying system notifications (e.g., "User joined")  
+  系统消息组件，用于显示系统提示信息（如"用户已加入"）
+- **MessageStatus**: Message status component showing delivery states (sending, delivered, read, etc.)  
+  消息状态组件，显示消息的发送状态（发送中、已送达、已读等）
+
+### Status Indicators | 状态指示器
+
+- **Typing**: Typing indicator showing animated effect when someone is typing  
+  打字中指示器，显示对方正在输入的动画效果
+- **Thinking**: Thinking indicator for AI processing states  
+  思考中指示器，适用于 AI 处理状态的显示
+
+### Input Enhancement | 输入增强
+
+- **EmojiPicker**: Emoji picker component providing emoji selection functionality  
+  表情选择器组件，提供表情符号选择功能
+- **RichEditor**: Rich text editor component with advanced text editing features  
+  富文本编辑器组件，支持更丰富的文本编辑功能
+
+### Basic UI Components | 基础 UI 组件
+
+- **Button**: Button component with various styles and states  
+  按钮组件，提供各种样式和状态的按钮
+- **ButtonGroup**: Button group component for combining multiple buttons  
+  按钮组组件，用于组合多个按钮
+- **Card**: Card component as a container for content display  
+  卡片组件，用于内容展示的容器
+- **FileCard**: File card component displaying file information (name, size, type, etc.)  
+  文件卡片组件，用于显示文件信息（文件名、大小、类型等）
+- **Image**: Image component with preview and loading state support  
+  图片组件，支持预览、加载状态等功能
+- **Input**: Input component providing basic text input functionality  
+  输入框组件，提供基础的文本输入功能
+- **Checkbox**: Checkbox component for single option selection  
+  复选框组件，用于单个选项的选择
+- **CheckboxGroup**: Checkbox group component for managing multiple checkboxes  
+  复选框组组件，用于管理多个复选框
+- **Search**: Search box component with search input and functionality  
+  搜索框组件，提供搜索输入和搜索功能
+
+### Layout Components | 布局组件
+
+- **Flex**: Flexible layout container component based on Flexbox  
+  弹性布局容器组件，基于 Flexbox 布局
+- **FlexItem**: Flexible layout item component used as child of Flex  
+  弹性布局项组件，作为 Flex 的子项使用
+
+## Hooks
+
+- **useAutoScroll**: Auto-scroll hook for automatically scrolling message list to bottom  
+  自动滚动 Hook，用于消息列表的自动滚动到底部
+- **useTypewriter**: Typewriter effect hook for character-by-character text animation  
+  打字机效果 Hook，实现文字逐字显示的动画效果
+
+## Getting Started | 快速开始
+
+### Prerequisites | 前置要求
 
 - Node.js >= 16
 - Vue >= 3.4
 - Vant >= 4.8
 
-### Installation
+### Installation | 安装
 
 Currently, this project is set up as a monorepo. To use it, you can clone the repository and build it locally.
+
+目前该项目设置为 monorepo。要使用它，你可以克隆仓库并在本地构建。
 
 ```bash
 git clone https://github.com/your-username/chatvant.git
@@ -38,9 +97,11 @@ cd chatvant
 npm install
 ```
 
-### Running the Demo
+### Running the Demo | 运行示例
 
 To see the components in action, you can run the example project:
+
+要查看组件的实际效果，可以运行示例项目：
 
 ```bash
 npm run dev
@@ -48,87 +109,39 @@ npm run dev
 
 This will start a Vite development server where you can preview the chat UI.
 
-## Usage
+这将启动一个 Vite 开发服务器，你可以在其中预览聊天 UI。
 
-Here is a basic example of how to use ChatVant components in your Vue 3 application:
+For more examples, check the `examples/` directory.
 
-```vue
-<template>
-  <Chat ref="chatRef">
-    <!-- Message List -->
-    <template #default>
-      <Message 
-        v-for="msg in messages" 
-        :key="msg._id" 
-        :msg="msg" 
-      />
-      <!-- AI Thinking State -->
-      <Thinking v-if="isThinking" text="Thinking..." />
-    </template>
+更多示例请查看 `examples/` 目录。
 
-    <!-- Input Area -->
-    <template #composer>
-      <Composer @send="handleSend" />
-    </template>
-  </Chat>
-</template>
-
-<script setup>
-import { ref } from 'vue'
-import { Chat, Message, Composer, Thinking } from 'chatvant' // Adjust import path as needed
-
-const messages = ref([
-  {
-    _id: '1',
-    type: 'text',
-    content: 'Hello! How can I help you?',
-    position: 'left',
-    user: { name: 'AI Assistant', avatar: '...' }
-  }
-])
-
-const isThinking = ref(false)
-
-const handleSend = (text) => {
-  // Add user message
-  messages.value.push({
-    _id: Date.now(),
-    type: 'text',
-    content: text,
-    position: 'right',
-    user: { name: 'Me', avatar: '...' }
-  })
-  
-  // Simulate AI response
-  isThinking.value = true
-  // ... logic to get response
-}
-</script>
-```
-
-## Project Structure
+## Project Structure | 项目结构
 
 ```
 chatvant/
-├── examples/          # Demo application using the library
-├── packages/          # Library source code
+├── examples/          # Demo application using the library | 使用组件库的示例应用
+├── packages/          # Library source code | 组件库源代码
 │   └── src/
-│       ├── components/  # UI Components (Chat, Message, etc.)
-│       └── hooks/       # Composable hooks (useAutoScroll, etc.)
-├── package.json       # Project configuration
-└── README.md          # Project documentation
+│       ├── components/  # UI Components (Chat, Message, etc.) | UI 组件
+│       └── hooks/       # Composable hooks (useAutoScroll, etc.) | 可组合的 Hooks
+├── package.json       # Project configuration | 项目配置
+└── README.md          # Project documentation | 项目文档
 ```
 
-## Contributing
+## Contributing | 贡献
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+欢迎贡献！请随时提交 Pull Request。
 
-## License
+1. Fork the Project | 复刻项目
+2. Create your Feature Branch | 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes | 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch | 推送到分支 (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request | 开启 Pull Request
+
+## License | 许可证
 
 Distributed under the MIT License. See `package.json` for more information.
+
+采用 MIT 许可证分发。更多信息请查看 `package.json`。
