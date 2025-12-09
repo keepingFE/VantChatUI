@@ -22,9 +22,9 @@
 
         <!-- 文本消息 -->
         <div v-if="msg.type === 'text'" class="message-bubble" :class="[`bubble-${msg.position}`]">
-          <span v-if="msg.typing">
-            {{ displayText }}
-            <span v-if="isTypingActive" class="typing-cursor"></span>
+          <span v-if="msg.typing" class="typing-text-wrapper">
+            <span v-for="(char, index) in displayTextArray" :key="index" class="typing-char"
+              :style="{ animationDelay: `${index * 0.05}s` }">{{ char }}</span>
           </span>
           <span v-else>{{ msg.content }}</span>
         </div>
@@ -32,11 +32,7 @@
         <!-- 图片消息 -->
         <div v-else-if="msg.type === 'image'" class="message-image-bubble" :class="[`bubble-${msg.position}`]"
           @click="handleImagePreview">
-          <van-image :src="msg.content" fit="contain" :style="{
-            maxWidth: '200px',
-            maxHeight: '200px',
-            borderRadius: '4px'
-          }">
+          <van-image :src="msg.content" fit="contain" :width="200" height="200" radius="8">
             <template #error>
               <div class="image-error">加载失败</div>
             </template>
@@ -52,7 +48,7 @@
             <div class="file-name">{{ msg.file?.name || '未知文件' }}</div>
             <div class="file-meta">
               <span class="file-size">{{ msg.file?.size || '0 KB' }}</span>
-              <span v-if="msg.file?.downloadable !== false" class="file-download" @click.stop="handleFileDownload">
+              <span v-if="msg.file.downloadable !== false" class="file-download" @click.stop="handleFileDownload">
                 下载
               </span>
             </div>
@@ -78,7 +74,7 @@ const props = defineProps({
 
 // 打字机效果
 const displayText = ref('')
-const isTypingActive = ref(false) // 是否正在打字
+const displayTextArray = ref([])
 let typingTimer = null
 
 // 开始打字效果
@@ -86,7 +82,7 @@ const startTyping = () => {
   if (!props.msg.typing || !props.msg.content) return
 
   displayText.value = ''
-  isTypingActive.value = true // 开始打字，显示光标
+  displayTextArray.value = []
   let currentIndex = 0
   const text = props.msg.content
   const speed = props.msg.typingSpeed || 50 // 默认 50ms/字符
@@ -100,12 +96,12 @@ const startTyping = () => {
   typingTimer = setInterval(() => {
     if (currentIndex < text.length) {
       displayText.value += text[currentIndex]
+      displayTextArray.value.push(text[currentIndex])
       currentIndex++
     } else {
-      // 打字完成，隐藏光标
+      // 打字完成
       clearInterval(typingTimer)
       typingTimer = null
-      isTypingActive.value = false
     }
   }, speed)
 }
@@ -118,6 +114,7 @@ watch(
       startTyping()
     } else {
       displayText.value = newMsg.content || ''
+      displayTextArray.value = []
     }
   },
   { immediate: true, deep: true }
@@ -283,29 +280,7 @@ const handleFileDownload = () => {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-// ========== 打字机光标 ==========
-.typing-cursor {
-  display: inline-block;
-  width: 2px;
-  height: 1em;
-  background-color: currentColor;
-  margin-left: 2px;
-  animation: cursor-blink 1s infinite;
-  vertical-align: text-bottom;
-}
 
-@keyframes cursor-blink {
-
-  0%,
-  49% {
-    opacity: 1;
-  }
-
-  50%,
-  100% {
-    opacity: 0;
-  }
-}
 
 // ========== 图片消息 ==========
 .message-image-bubble {
@@ -418,6 +393,27 @@ const handleFileDownload = () => {
 
   &:active {
     opacity: 0.7;
+  }
+}
+
+// ========== 打字机渐显效果 ==========
+.typing-text-wrapper {
+  display: inline;
+}
+
+.typing-char {
+  display: inline-block;
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 </style>
