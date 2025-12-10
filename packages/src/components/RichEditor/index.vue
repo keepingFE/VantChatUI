@@ -171,7 +171,7 @@ const {
 } = useCommands(editor);
 
 // 使用上传钩子
-const { handleImageUpload, handleVideoUpload, handleFileUpload, handleFileSelect, cancelUpload } = useUpload(editor, props, imageDialog, videoDialog, fileDialog);
+const { handleImageUpload, handleVideoUpload, handleFileUpload, cancelUpload } = useUpload(editor, props, imageDialog, videoDialog, fileDialog);
 
 // 监听外部值变化
 watch(() => props.modelValue, (val) => {

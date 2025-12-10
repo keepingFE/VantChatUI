@@ -87,14 +87,79 @@ ChatVant 是一个基于 **Vue 3** 和 **Vant 4** 构建的轻量级、移动优
 
 ### Installation | 安装
 
-Currently, this project is set up as a monorepo. To use it, you can clone the repository and build it locally.
+#### 方式一：通过 npm 安装（推荐）
 
-目前该项目设置为 monorepo。要使用它，你可以克隆仓库并在本地构建。
+```bash
+npm install chatvant
+# or
+yarn add chatvant
+# or
+pnpm add chatvant
+```
+
+**如果需要使用 RichEditor 组件**，还需要安装 TipTap 依赖：
+
+```bash
+npm install @tiptap/vue-3 @tiptap/starter-kit
+```
+
+#### 方式二：从源码构建
+
+如果你想从源码构建或参与开发：
 
 ```bash
 git clone https://github.com/your-username/chatvant.git
 cd chatvant
 npm install
+npm run build:lib
+```
+
+### Quick Start | 快速开始
+
+```javascript
+// main.js
+import { createApp } from 'vue';
+import App from './App.vue';
+import 'vant/lib/index.css';
+import 'chatvant/dist/chatvant.css';
+
+createApp(App).mount('#app');
+```
+
+```vue
+<!-- App.vue -->
+<script setup>
+import { Chat, Message, Composer } from 'chatvant';
+import { ref } from 'vue';
+
+const messages = ref([
+  { id: 1, type: 'text', content: 'Hello!', position: 'left' }
+]);
+
+const handleSend = (content) => {
+  messages.value.push({
+    id: Date.now(),
+    type: 'text',
+    content,
+    position: 'right'
+  });
+};
+</script>
+
+<template>
+  <Chat>
+    <Message
+      v-for="msg in messages"
+      :key="msg.id"
+      :type="msg.type"
+      :content="msg.content"
+      :position="msg.position"
+    />
+    <template #composer>
+      <Composer @send="handleSend" />
+    </template>
+  </Chat>
+</template>
 ```
 
 ### Running the Demo | 运行示例
@@ -111,9 +176,9 @@ This will start a Vite development server where you can preview the chat UI.
 
 这将启动一个 Vite 开发服务器，你可以在其中预览聊天 UI。
 
-For more examples, check the `examples/` directory.
+For more examples, check the `examples/` directory or see [USAGE_EXAMPLE.md](./GUIDE.md).
 
-更多示例请查看 `examples/` 目录。
+更多示例请查看 `examples/` 目录或查看 [USAGE_EXAMPLE.md](./GUIDE.md)。
 
 ## Project Structure | 项目结构
 
@@ -126,6 +191,203 @@ chatvant/
 │       └── hooks/       # Composable hooks (useAutoScroll, etc.) | 可组合的 Hooks
 ├── package.json       # Project configuration | 项目配置
 └── README.md          # Project documentation | 项目文档
+```
+
+## Publishing | 发布到 npm
+
+### 发布前准备
+
+1. **更新版本号**
+
+```bash
+cd packages
+
+# 补丁版本（bug 修复）：1.0.0 -> 1.0.1
+npm version patch
+
+# 次版本（新功能）：1.0.0 -> 1.1.0
+npm version minor
+
+# 主版本（破坏性更新）：1.0.0 -> 2.0.0
+npm version major
+```
+
+2. **更新仓库地址**
+
+编辑 `packages/package.json`，将仓库地址更新为实际地址：
+```json
+"repository": {
+  "type": "git",
+  "url": "https://github.com/your-actual-username/chatvant.git",
+  "directory": "packages"
+}
+```
+
+3. **构建组件库**
+
+```bash
+cd packages
+npm run build
+```
+
+4. **发布前检查**
+
+```bash
+npm run check
+```
+
+### 发布到 npm
+
+```bash
+# 登录 npm（首次发布需要）
+npm login
+
+# 发布
+npm publish
+
+# 如果是作用域包（如 @your-org/chatvant）
+npm publish --access public
+```
+
+### 本地测试
+
+在发布前，建议先在本地测试：
+
+```bash
+cd packages
+npm pack
+# 生成 chatvant-1.0.0.tgz
+
+# 在测试项目中安装
+cd /path/to/test-project
+npm install /path/to/chatvant-1.0.0.tgz
+```
+
+更多详细信息请查看 [PUBLISH.md](./PUBLISH.md)。
+
+## Usage After Publishing | 发布后的使用方式
+
+### 安装
+
+```bash
+# 基础安装
+npm install chatvant
+
+# 如果需要使用 RichEditor 组件
+npm install @tiptap/vue-3 @tiptap/starter-kit
+```
+
+### 导入和使用
+
+```javascript
+// main.js - 全局引入样式
+import { createApp } from 'vue';
+import App from './App.vue';
+import 'vant/lib/index.css';
+import 'chatvant/style.css';  // 或 'chatvant/dist/chatvant.css'
+
+createApp(App).mount('#app');
+```
+
+```vue
+<!-- 在组件中使用 -->
+<script setup>
+import { Chat, Message, Composer, Typing, Thinking } from 'chatvant';
+import { ref } from 'vue';
+
+const messages = ref([
+  { id: 1, type: 'text', content: 'Hello!', position: 'left' },
+  { id: 2, type: 'text', content: 'Hi there!', position: 'right' }
+]);
+
+const isTyping = ref(false);
+
+const handleSend = (content) => {
+  messages.value.push({
+    id: Date.now(),
+    type: 'text',
+    content,
+    position: 'right'
+  });
+  
+  // 模拟 AI 回复
+  isTyping.value = true;
+  setTimeout(() => {
+    isTyping.value = false;
+    messages.value.push({
+      id: Date.now(),
+      type: 'text',
+      content: 'This is an AI response',
+      position: 'left'
+    });
+  }, 2000);
+};
+</script>
+
+<template>
+  <Chat>
+    <Message
+      v-for="msg in messages"
+      :key="msg.id"
+      :type="msg.type"
+      :content="msg.content"
+      :position="msg.position"
+    />
+    <Typing v-if="isTyping" />
+    <template #composer>
+      <Composer @send="handleSend" />
+    </template>
+  </Chat>
+</template>
+```
+
+### 按需导入
+
+```javascript
+// 只导入需要的组件
+import { Chat, Message } from 'chatvant';
+
+// 导入 Hooks
+import { useAutoScroll, useTypewriter } from 'chatvant';
+```
+
+### 使用 RichEditor
+
+如果需要使用富文本编辑器组件，需要先安装依赖：
+
+```bash
+npm install @tiptap/vue-3 @tiptap/starter-kit
+```
+
+然后在组件中使用：
+
+```vue
+<script setup>
+import { RichEditor } from 'chatvant';
+import { ref } from 'vue';
+
+const content = ref('');
+
+const handleUploadImage = async (file) => {
+  // 自定义图片上传逻辑
+  const formData = new FormData();
+  formData.append('file', file);
+  const response = await fetch('/api/upload', {
+    method: 'POST',
+    body: formData
+  });
+  const data = await response.json();
+  return data.url;
+};
+</script>
+
+<template>
+  <RichEditor
+    v-model="content"
+    placeholder="请输入内容..."
+    :upload-image="handleUploadImage"
+  />
+</template>
 ```
 
 ## Contributing | 贡献

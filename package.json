@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "cd examples && vite",
     "build": "cd examples && vite build",
-    "preview": "cd examples && vite preview"
+    "preview": "cd examples && vite preview",
+    "build:lib": "cd packages && npm run build",
+    "prepublish": "npm run build:lib"
   },
   "keywords": [
     "vue3",

@@ -1,6 +1,10 @@
 export function useUpload(editor, props, imageDialog, videoDialog, fileDialog) {
-  // 上传控制器，用于取消上传
-  let uploadController = null;
+  // 上传控制器，用于取消上传（为每种类型维护独立的控制器）
+  const uploadControllers = {
+    image: null,
+    video: null,
+    file: null,
+  };
 
   // 格式化文件大小
   const formatFileSize = (bytes) => {
@@ -24,10 +28,13 @@ export function useUpload(editor, props, imageDialog, videoDialog, fileDialog) {
 
   // 取消上传
   const cancelUpload = () => {
-    if (uploadController) {
-      uploadController.abort();
-      uploadController = null;
-    }
+    // 取消所有正在进行的上传
+    Object.keys(uploadControllers).forEach(key => {
+      if (uploadControllers[key]) {
+        uploadControllers[key].abort();
+        uploadControllers[key] = null;
+      }
+    });
   };
 
   // 处理图片上传
@@ -51,10 +58,10 @@ export function useUpload(editor, props, imageDialog, videoDialog, fileDialog) {
       imageDialog.value.progress = 0;
       
       // 创建取消控制器
-      uploadController = new AbortController();
+      uploadControllers.image = new AbortController();
       
       const url = await props.uploadImage(file.file, {
-        signal: uploadController.signal,
+        signal: uploadControllers.image.signal,
         onProgress: (percent) => {
           imageDialog.value.progress = percent;
         }
@@ -64,7 +71,7 @@ export function useUpload(editor, props, imageDialog, videoDialog, fileDialog) {
         editor.value.chain().focus().setImage({ src: url }).run();
       }
       imageDialog.value = { show: false, url: '', tab: 0, fileList: [], uploading: false, progress: 0 };
-      uploadController = null;
+      uploadControllers.image = null;
     } catch (e) {
       if (e.name === 'AbortError') {
         console.log('图片上传已取消');
@@ -74,7 +81,7 @@ export function useUpload(editor, props, imageDialog, videoDialog, fileDialog) {
       }
       imageDialog.value.uploading = false;
       imageDialog.value.progress = 0;
-      uploadController = null;
+      uploadControllers.image = null;
     }
   };
 
@@ -98,10 +105,10 @@ export function useUpload(editor, props, imageDialog, videoDialog, fileDialog) {
       videoDialog.value.progress = 0;
       
       // 创建取消控制器
-      uploadController = new AbortController();
+      uploadControllers.video = new AbortController();
       
       const url = await props.uploadVideo(file.file, {
-        signal: uploadController.signal,
+        signal: uploadControllers.video.signal,
         onProgress: (percent) => {
           videoDialog.value.progress = percent;
         }
@@ -111,7 +118,7 @@ export function useUpload(editor, props, imageDialog, videoDialog, fileDialog) {
         editor.value.chain().focus().setNativeVideo({ src: url }).run();
       }
       videoDialog.value = { show: false, code: '', tab: 0, fileList: [], uploading: false, progress: 0 };
-      uploadController = null;
+      uploadControllers.video = null;
     } catch (e) {
       if (e.name === 'AbortError') {
         console.log('视频上传已取消');
@@ -121,16 +128,16 @@ export function useUpload(editor, props, imageDialog, videoDialog, fileDialog) {
       }
       videoDialog.value.uploading = false;
       videoDialog.value.progress = 0;
-      uploadController = null;
+      uploadControllers.video = null;
     }
   };
 
-  // 处理文件选择
+  // 处理文件选择（已废弃，保留以兼容旧代码）
   const handleFileSelect = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // 检查文件大小
+    // 检查文件大小（使用正确的限制）
     if (!checkFileSize(file, props.maxImageSize, '图片')) {
       e.target.value = '';
       return;
@@ -140,15 +147,16 @@ export function useUpload(editor, props, imageDialog, videoDialog, fileDialog) {
       try {
         const url = await props.uploadImage(file);
         if (url) {
-          editor.value.chain().focus().setImage({ src: url }).run();
+          editor.value?.chain().focus().setImage({ src: url }).run();
         }
       } catch (err) {
         console.error('图片上传失败:', err);
+        alert('图片上传失败: ' + (err.message || '未知错误'));
       }
     } else {
       const reader = new FileReader();
       reader.onload = () => {
-        editor.value.chain().focus().setImage({ src: reader.result }).run();
+        editor.value?.chain().focus().setImage({ src: reader.result }).run();
       };
       reader.readAsDataURL(file);
     }
@@ -180,10 +188,10 @@ export function useUpload(editor, props, imageDialog, videoDialog, fileDialog) {
       fileDialog.value.progress = 0;
       
       // 创建取消控制器
-      uploadController = new AbortController();
+      uploadControllers.file = new AbortController();
       
       const url = await props.uploadFile(file.file, {
-        signal: uploadController.signal,
+        signal: uploadControllers.file.signal,
         onProgress: (percent) => {
           fileDialog.value.progress = percent;
         }
@@ -194,7 +202,7 @@ export function useUpload(editor, props, imageDialog, videoDialog, fileDialog) {
         editor.value.chain().focus().insertContent(fileLink).run();
       }
       fileDialog.value = { show: false, tab: 0, fileList: [], uploading: false, progress: 0 };
-      uploadController = null;
+      uploadControllers.file = null;
     } catch (e) {
       if (e.name === 'AbortError') {
         console.log('文件上传已取消');
@@ -204,7 +212,7 @@ export function useUpload(editor, props, imageDialog, videoDialog, fileDialog) {
       }
       fileDialog.value.uploading = false;
       fileDialog.value.progress = 0;
-      uploadController = null;
+      uploadControllers.file = null;
     }
   };
 
