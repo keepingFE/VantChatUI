@@ -4,6 +4,7 @@ export function useCommands(editor) {
   const linkDialog = ref({ show: false, url: '', text: '' });
   const imageDialog = ref({ show: false, url: '', tab: 0, fileList: [], uploading: false });
   const videoDialog = ref({ show: false, code: '', tab: 0, fileList: [], uploading: false });
+  const fileDialog = ref({ show: false, tab: 0, fileList: [], uploading: false });
   const tableDialog = ref({ show: false, rows: 3, cols: 3, withHeader: true, headers: '', defaultContent: '' });
 
   // 判断当前状态
@@ -39,6 +40,7 @@ export function useCommands(editor) {
       link: () => { linkDialog.value = { show: true, url: '', text: '' }; },
       image: () => { imageDialog.value = { show: true, url: '', tab: 0, fileList: [], uploading: false }; },
       video: () => { videoDialog.value = { show: true, code: '', tab: 0, fileList: [], uploading: false }; },
+      file: () => { fileDialog.value = { show: true, tab: 0, fileList: [], uploading: false }; },
       table: () => { tableDialog.value = { show: true, rows: 3, cols: 3, withHeader: true, headers: '', defaultContent: '' }; },
       alignLeft: () => editor.value.chain().focus().setTextAlign('left').run(),
       alignCenter: () => editor.value.chain().focus().setTextAlign('center').run(),
@@ -133,6 +135,7 @@ export function useCommands(editor) {
     linkDialog,
     imageDialog,
     videoDialog,
+    fileDialog,
     tableDialog,
     isActive,
     execCommand,

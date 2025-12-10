@@ -25,16 +25,41 @@
     margin-top: 8px;
     font-size: 12px;
   }
+
+  .upload-hint {
+    margin-top: 4px;
+    font-size: 11px;
+    color: #aaa;
+  }
 }
 
 .upload-loading {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 12px;
   margin-top: 12px;
+  padding: 16px;
   color: #666;
   font-size: 14px;
+
+  .upload-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 12px;
+
+    span {
+      flex: 1;
+      text-align: left;
+    }
+  }
+
+  .van-progress {
+    width: 100%;
+  }
 }
 
 .table-config {

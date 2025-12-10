@@ -36,7 +36,11 @@
             </van-uploader>
             <div v-if="imageDialog.uploading" class="upload-loading">
               <van-loading size="24" />
-              <span>上传中...</span>
+              <div class="upload-info">
+                <span>上传中... {{ imageDialog.progress || 0 }}%</span>
+                <van-button size="small" type="danger" plain @click="cancelUpload">取消</van-button>
+              </div>
+              <van-progress v-if="imageDialog.progress" :percentage="imageDialog.progress" stroke-width="4" />
             </div>
           </div>
         </van-tab>
@@ -60,7 +64,11 @@
             </van-uploader>
             <div v-if="videoDialog.uploading" class="upload-loading">
               <van-loading size="24" />
-              <span>上传中...</span>
+              <div class="upload-info">
+                <span>上传中... {{ videoDialog.progress || 0 }}%</span>
+                <van-button size="small" type="danger" plain @click="cancelUpload">取消</van-button>
+              </div>
+              <van-progress v-if="videoDialog.progress" :percentage="videoDialog.progress" stroke-width="4" />
             </div>
           </div>
         </van-tab>
@@ -69,6 +77,28 @@
             placeholder="请粘贴视频嵌入代码（iframe）或视频URL" />
         </van-tab>
       </van-tabs>
+    </van-dialog>
+
+    <!-- 文件弹窗 -->
+    <van-dialog v-model:show="fileDialog.show" title="插入文件" :show-cancel-button="false" :show-confirm-button="false">
+      <div class="upload-area">
+        <van-uploader v-model="fileDialog.fileList" :max-count="1" :after-read="handleFileUpload"
+          accept=".txt,.doc,.docx,.pdf,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.7z">
+          <div class="upload-trigger">
+            <van-icon name="description" size="32" />
+            <span>点击上传文件</span>
+            <p class="upload-hint">支持文档、压缩包等格式</p>
+          </div>
+        </van-uploader>
+        <div v-if="fileDialog.uploading" class="upload-loading">
+          <van-loading size="24" />
+          <div class="upload-info">
+            <span>上传中... {{ fileDialog.progress || 0 }}%</span>
+            <van-button size="small" type="danger" plain @click="cancelUpload">取消</van-button>
+          </div>
+          <van-progress v-if="fileDialog.progress" :percentage="fileDialog.progress" stroke-width="4" />
+        </div>
+      </div>
     </van-dialog>
 
     <!-- 表格弹窗 -->
@@ -103,6 +133,10 @@ const props = defineProps({
   autofocus: { type: Boolean, default: false },
   uploadImage: { type: Function, default: null },
   uploadVideo: { type: Function, default: null },
+  uploadFile: { type: Function, default: null },
+  maxImageSize: { type: Number, default: null }, // 图片最大文件大小（字节）
+  maxVideoSize: { type: Number, default: null }, // 视频最大文件大小（字节）
+  maxFileSize: { type: Number, default: null }, // 文件最大文件大小（字节）
   toolbar: { type: Array, default: () => DEFAULT_TOOLBAR },
 });
 
@@ -126,6 +160,7 @@ const {
   linkDialog,
   imageDialog,
   videoDialog,
+  fileDialog,
   tableDialog,
   isActive,
   execCommand,
@@ -136,7 +171,7 @@ const {
 } = useCommands(editor);
 
 // 使用上传钩子
-const { handleImageUpload, handleVideoUpload, handleFileSelect } = useUpload(editor, props, imageDialog, videoDialog);
+const { handleImageUpload, handleVideoUpload, handleFileUpload, handleFileSelect, cancelUpload } = useUpload(editor, props, imageDialog, videoDialog, fileDialog);
 
 // 监听外部值变化
 watch(() => props.modelValue, (val) => {
