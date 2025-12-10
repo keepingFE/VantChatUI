@@ -1,11 +1,7 @@
 <!-- File: examples/src/views/RichEditorDemo.vue -->
 <template>
   <div class="demo-page">
-    <van-nav-bar
-      title="RichEditor 富文本编辑器"
-      left-arrow
-      @click-left="$router.back()"
-    />
+    <van-nav-bar title="RichEditor 富文本编辑器" left-arrow @click-left="$router.back()" />
 
     <div class="demo-content">
       <van-cell-group title="基础用法">
@@ -16,11 +12,8 @@
 
       <van-cell-group title="自定义工具栏">
         <div class="demo-block">
-          <RichEditor
-            v-model="content2"
-            :toolbar="['bold', 'italic', 'underline', '|', 'link', 'image']"
-            placeholder="简化工具栏..."
-          />
+          <RichEditor v-model="content2" :toolbar="['bold', 'italic', 'underline', '|', 'link', 'image']"
+            placeholder="简化工具栏..." />
         </div>
       </van-cell-group>
 
@@ -38,12 +31,7 @@
 
       <van-cell-group title="自定义高度">
         <div class="demo-block">
-          <RichEditor
-            v-model="content4"
-            min-height="200px"
-            max-height="300px"
-            placeholder="自定义高度..."
-          />
+          <RichEditor v-model="content4" min-height="200px" max-height="300px" placeholder="自定义高度..." />
         </div>
       </van-cell-group>
 
@@ -70,12 +58,17 @@ const content4 = ref("");
 
 <style scoped lang="scss">
 .demo-page {
-  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: #f7f8fa;
+  overflow: hidden;
 }
 
 .demo-content {
+  flex: 1;
   padding: 12px;
+  overflow-y: auto;
 }
 
 .demo-block {

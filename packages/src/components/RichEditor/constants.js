@@ -1,0 +1,63 @@
+// 工具栏图标
+export const ICONS = {
+  bold: '<svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 11h4.5a2.5 2.5 0 0 0 0-5H8v5Zm10 4.5a4.5 4.5 0 0 1-4.5 4.5H6V4h6.5a4.5 4.5 0 0 1 3.256 7.606A4.5 4.5 0 0 1 18 15.5ZM8 13v5h5.5a2.5 2.5 0 0 0 0-5H8Z"/></svg>',
+  italic: '<svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M15 20H7v-2h2.927l2.116-12H9V4h8v2h-2.927l-2.116 12H15v2Z"/></svg>',
+  underline: '<svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 3v9a4 4 0 1 0 8 0V3h2v9a6 6 0 1 1-12 0V3h2ZM4 20h16v2H4v-2Z"/></svg>',
+  strike: '<svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M17.154 14c.23.516.346 1.09.346 1.72 0 1.342-.524 2.392-1.571 3.147C14.88 19.622 13.433 20 11.586 20c-1.64 0-3.263-.381-4.87-1.144V16.6c1.52.877 3.075 1.316 4.666 1.316 2.551 0 3.83-.732 3.839-2.197a2.21 2.21 0 0 0-.648-1.603l-.12-.117H3v-2h18v2h-3.846ZM12 7c-1.837 0-2.755.673-2.755 2.02 0 .467.168.858.503 1.172l.166.149H6.012A4.054 4.054 0 0 1 5.8 9.02C5.8 6.34 7.73 5 11.59 5c1.499 0 2.988.318 4.47.954v2.182A9.382 9.382 0 0 0 12 7Z"/></svg>',
+  heading: '<svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M13 20h-2v-7H4v7H2V4h2v7h7V4h2v16Zm8-12v12h-2v-9.796l-2 .536V8.67L19.5 8H21Z"/></svg>',
+  bulletList: '<svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 4h13v2H8V4ZM4.5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm0 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm0 6.9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3ZM8 11h13v2H8v-2Zm0 7h13v2H8v-2Z"/></svg>',
+  orderedList: '<svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 4h13v2H8V4ZM5 3v3h1v1H3V6h1V4H3V3h2Zm-2 7h3.5v1H4v1h1.5v1H3v-4Zm2 9v1H3v-1h1v-1H3v-1h3v4H4v-1h1Zm3-6h13v2H8v-2Zm0 7h13v2H8v-2Z"/></svg>',
+  link: '<svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M18.364 15.536 16.95 14.12l1.414-1.414a5.001 5.001 0 0 0-7.071-7.071L9.879 7.05 8.464 5.636l1.414-1.414a7 7 0 1 1 9.9 9.9l-1.414 1.414Zm-2.828 2.828-1.415 1.414a7 7 0 0 1-9.9-9.9l1.415-1.414L7.05 9.88l-1.414 1.414a5 5 0 1 0 7.071 7.071l1.414-1.414 1.415 1.414Zm-.708-10.607 1.415 1.415-7.071 7.07-1.415-1.414 7.071-7.07Z"/></svg>',
+  image: '<svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M4.828 21l-.02.02-.021-.02H2.992A.993.993 0 0 1 2 20.007V3.993A1 1 0 0 1 2.992 3h18.016c.548 0 .992.445.992.993v16.014a1 1 0 0 1-.992.993H4.828ZM20 15V5H4v14L14 9l6 6Zm0 2.828-6-6L6.828 19H20v-1.172ZM8 11a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"/></svg>',
+  video: '<svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M2 3.993A1 1 0 0 1 2.992 3h18.016c.548 0 .992.445.992.993v16.014a1 1 0 0 1-.992.993H2.992A.993.993 0 0 1 2 20.007V3.993ZM4 5v14h16V5H4Zm6.622 3.415 4.879 3.252a.4.4 0 0 1 0 .666l-4.88 3.252A.4.4 0 0 1 10 15.253V8.747a.4.4 0 0 1 .622-.332Z"/></svg>',
+  table: '<svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm1 2v4h6V5H5Zm8 0v4h6V5h-6Zm6 6h-6v4h6v-4Zm0 6h-6v4h6v-4ZM11 19v-4H5v4h6Zm-6-6h6v-4H5v4Z"/></svg>',
+  alignLeft: '<svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M3 4h18v2H3V4Zm0 8h18v2H3v-2Zm0 8h18v2H3v-2Zm0-12h12v2H3V8Zm0 8h12v2H3v-2Z"/></svg>',
+  alignCenter: '<svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M3 4h18v2H3V4Zm2 4h14v2H5V8Zm-2 4h18v2H3v-2Zm2 4h14v2H5v-2Zm-2 4h18v2H3v-2Z"/></svg>',
+  alignRight: '<svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M3 4h18v2H3V4Zm6 4h12v2H9V8Zm-6 4h18v2H3v-2Zm6 4h12v2H9v-2Zm-6 4h18v2H3v-2Z"/></svg>',
+  undo: '<svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M5.828 7l2.536 2.536L6.95 10.95 2 6l4.95-4.95 1.414 1.414L5.828 5H13a8 8 0 1 1 0 16H4v-2h9a6 6 0 1 0 0-12H5.828Z"/></svg>',
+  redo: '<svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M18.172 7H11a6 6 0 1 0 0 12h9v2h-9a8 8 0 1 1 0-16h7.172l-2.536-2.536L17.05 1.05 22 6l-4.95 4.95-1.414-1.414L18.172 7Z"/></svg>',
+};
+
+// 工具栏标题
+export const TITLES = {
+  bold: '粗体',
+  italic: '斜体',
+  underline: '下划线',
+  strike: '删除线',
+  heading: '标题',
+  bulletList: '无序列表',
+  orderedList: '有序列表',
+  link: '链接',
+  image: '图片',
+  video: '视频',
+  table: '表格',
+  alignLeft: '左对齐',
+  alignCenter: '居中',
+  alignRight: '右对齐',
+  undo: '撤销',
+  redo: '重做',
+};
+
+// 默认工具栏配置
+export const DEFAULT_TOOLBAR = [
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  '|',
+  'heading',
+  'bulletList',
+  'orderedList',
+  '|',
+  'link',
+  'image',
+  'video',
+  'table',
+  '|',
+  'alignLeft',
+  'alignCenter',
+  'alignRight',
+  '|',
+  'undo',
+  'redo',
+];
