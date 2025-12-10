@@ -199,7 +199,24 @@ export function useChunkUpload(options = {}) {
       // 只更新状态和已上传分片
       const task = await getTask(fileId)
       if (task) {
-        await saveTask({ ...task, status: newStatus, uploadedChunks: uploadedChunks.value })
+        // 只保留可序列化的属性，避免克隆错误
+        const cleanTask = {
+          id: task.id,
+          fileName: task.fileName,
+          fileSize: task.fileSize,
+          fileType: task.fileType,
+          uploadedChunks: [...uploadedChunks.value],  // 创建新数组副本
+          totalChunks: task.totalChunks,
+          chunkSize: task.chunkSize,
+          status: newStatus,
+          createdAt: task.createdAt,
+          hasFileContent: task.hasFileContent
+        }
+        // 如果有文件内容，也要保留
+        if (task.fileBuffer) {
+          cleanTask.fileBuffer = task.fileBuffer
+        }
+        await saveTask(cleanTask)
       }
     } else {
       // 创建新任务
@@ -208,7 +225,7 @@ export function useChunkUpload(options = {}) {
         fileName: file.name,
         fileSize: file.size,
         fileType: file.type,
-        uploadedChunks: uploadedChunks.value,
+        uploadedChunks: [...uploadedChunks.value],  // 创建新数组副本
         totalChunks: totalChunks.value,
         chunkSize,
         status: status.value,
