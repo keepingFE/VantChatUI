@@ -22,6 +22,7 @@ export { default as Checkbox } from "./components/Checkbox/index.vue";
 export { default as CheckboxGroup } from "./components/CheckboxGroup/index.vue";
 export { default as Input } from "./components/Input/index.vue";
 export { default as RichEditor } from "./components/RichEditor/index.vue";
+export { default as ChunkUploader } from "./components/ChunkUploader/index.vue";
 
 // 导出 Hooks
 export { useAutoScroll } from "./hooks/useAutoScroll.js";

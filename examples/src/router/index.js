@@ -16,6 +16,7 @@ import ImageDemo from "../views/ImageDemo.vue";
 import CheckboxDemo from "../views/CheckboxDemo.vue";
 import InputDemo from "../views/InputDemo.vue";
 import RichEditorDemo from "../views/RichEditorDemo.vue";
+import ChunkUploaderDemo from "../views/ChunkUploaderDemo.vue";
 
 const routes = [
   {
@@ -102,6 +103,11 @@ const routes = [
     path: "/rich-editor",
     name: "RichEditorDemo",
     component: RichEditorDemo,
+  },
+  {
+    path: "/chunk-uploader",
+    name: "ChunkUploaderDemo",
+    component: ChunkUploaderDemo,
   },
 ];
 

@@ -4,14 +4,8 @@
 
     <div class="content">
       <van-cell-group inset>
-        <van-cell
-          v-for="demo in demos"
-          :key="demo.path"
-          :title="demo.title"
-          :label="demo.description"
-          is-link
-          @click="goToDemo(demo.path)"
-        />
+        <van-cell v-for="demo in demos" :key="demo.path" :title="demo.title" :label="demo.description" is-link
+          @click="goToDemo(demo.path)" />
       </van-cell-group>
     </div>
   </div>
@@ -102,6 +96,11 @@ const demos = [
     path: "/rich-editor",
     title: "RichEditor 富文本编辑器",
     description: "基于 Tiptap 的富文本编辑器，支持格式化、链接、图片等",
+  },
+  {
+    path: "/chunk-uploader",
+    title: "ChunkUploader 大文件上传",
+    description: "支持分片上传、断点续传、暂停恢复的大文件上传组件",
   },
 ];
 
