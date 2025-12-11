@@ -102,6 +102,16 @@ const demos = [
     title: "ChunkUploader 大文件上传",
     description: "支持分片上传、断点续传、暂停恢复的大文件上传组件",
   },
+  {
+    path: "/loading",
+    title: "Loading 加载动画",
+    description: "基于 van-popup 的加载动画弹框，支持自定义文字和样式",
+  },
+  {
+    path: "/waterfall",
+    title: "Waterfall 瀑布流",
+    description: "高性能瀑布流图片展示组件，支持自定义列数和间距",
+  },
 ];
 
 const goToDemo = (path) => {

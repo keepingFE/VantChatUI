@@ -17,6 +17,8 @@ import CheckboxDemo from "../views/CheckboxDemo.vue";
 import InputDemo from "../views/InputDemo.vue";
 import RichEditorDemo from "../views/RichEditorDemo.vue";
 import ChunkUploaderDemo from "../views/ChunkUploaderDemo.vue";
+import LoadingDemo from "../views/LoadingDemo.vue";
+import WaterfallDemo from "../views/WaterfallDemo.vue";
 
 const routes = [
   {
@@ -108,6 +110,16 @@ const routes = [
     path: "/chunk-uploader",
     name: "ChunkUploaderDemo",
     component: ChunkUploaderDemo,
+  },
+  {
+    path: "/loading",
+    name: "LoadingDemo",
+    component: LoadingDemo,
+  },
+  {
+    path: "/waterfall",
+    name: "WaterfallDemo",
+    component: WaterfallDemo,
   },
 ];
 
