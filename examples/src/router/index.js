@@ -19,6 +19,9 @@ import RichEditorDemo from "../views/RichEditorDemo.vue";
 import ChunkUploaderDemo from "../views/ChunkUploaderDemo.vue";
 import LoadingDemo from "../views/LoadingDemo.vue";
 import WaterfallDemo from "../views/WaterfallDemo.vue";
+import SleepChartDemo from "../views/SleepChartDemo.vue";
+import SleepRingChartDemo from "../views/SleepRingChartDemo.vue";
+import HeartRateChartDemo from "../views/HeartRateChartDemo.vue";
 
 const routes = [
   {
@@ -120,6 +123,21 @@ const routes = [
     path: "/waterfall",
     name: "WaterfallDemo",
     component: WaterfallDemo,
+  },
+  {
+    path: "/sleep-chart",
+    name: "SleepChartDemo",
+    component: SleepChartDemo,
+  },
+  {
+    path: "/sleep-ring-chart",
+    name: "SleepRingChartDemo",
+    component: SleepRingChartDemo,
+  },
+  {
+    path: "/heart-rate-chart",
+    name: "HeartRateChartDemo",
+    component: HeartRateChartDemo,
   },
 ];
 

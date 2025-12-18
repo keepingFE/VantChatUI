@@ -25,6 +25,9 @@ export { default as RichEditor } from "./components/RichEditor/index.vue";
 export { default as ChunkUploader } from "./components/ChunkUploader/index.vue";
 export { default as Loading } from "./components/Loading/index.vue";
 export { default as Waterfall } from "./components/Waterfall/index.vue";
+export { default as SleepChart } from "./components/SleepChart/index.vue";
+export { default as SleepRingChart } from "./components/SleepRingChart/index.vue";
+export { default as HeartRateChart } from "./components/HeartRateChart/index.vue";
 
 // 导出 Hooks
 export { useAutoScroll } from "./hooks/useAutoScroll.js";

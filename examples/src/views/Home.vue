@@ -112,6 +112,21 @@ const demos = [
     title: "Waterfall 瀑布流",
     description: "高性能瀑布流图片展示组件，支持自定义列数和间距",
   },
+  {
+    path: "/sleep-chart",
+    title: "SleepChart 睡眠数据图表",
+    description: "睡眠数据展示组件，支持拖动切换不同睡眠区间",
+  },
+  {
+    path: "/sleep-ring-chart",
+    title: "SleepRingChart 睡眠环形图",
+    description: "基于 ECharts 的睡眠环形图，展示睡眠比例和时长",
+  },
+  {
+    path: "/heart-rate-chart",
+    title: "HeartRateChart 心率数据图表",
+    description: "心率数据展示组件，支持拖动查看不同时间点的心率",
+  },
 ];
 
 const goToDemo = (path) => {
