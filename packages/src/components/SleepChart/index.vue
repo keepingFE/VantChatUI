@@ -17,13 +17,11 @@
                 </g>
             </svg>
 
-            <!-- 时间提示框，仅在拖动滑块时显示 -->
-            <div v-if="showCursor && currentTimePoint" class="time-tooltip"
-                :style="{ left: cursorLinePosition + 'px' }">
-                <!-- 显示当前时间点 -->
-                <div class="tooltip-time">{{ currentTimePoint.time }}</div>
-                <!-- 显示当前睡眠阶段类型 -->
-                <div class="tooltip-type">{{ getSleepTypeName(currentTimePoint.type) }}</div>
+            <!-- 时间提示框 - 顶部居中显示详情 -->
+            <div v-if="showCursor && currentSegmentDetails" class="segment-info">
+                <span class="info-type">{{ currentSegmentDetails.typeName }}</span>
+                <span class="info-duration">{{ currentSegmentDetails.duration }} 分钟</span>
+                <span class="info-time">{{ currentSegmentDetails.startTime }}-{{ currentSegmentDetails.endTime }}</span>
             </div>
 
             <!-- 日期和时间标签区域 -->
@@ -31,12 +29,12 @@
                 <!-- 左侧标签：开始日期和入睡时间 -->
                 <div class="date-label">
                     <div class="date">{{ currentDateRange.startDate }}</div>
-                    <div class="time-label">入睡{{ currentDateRange.sleepTime }}</div>
+                    <div class="time-label">入睡 {{ currentDateRange.sleepTime }}</div>
                 </div>
                 <!-- 右侧标签：结束日期和醒来时间 -->
                 <div class="date-label end-label">
                     <div class="date">{{ currentDateRange.endDate }}</div>
-                    <div class="time-label">醒来{{ currentDateRange.wakeTime }}</div>
+                    <div class="time-label">醒来 {{ currentDateRange.wakeTime }}</div>
                 </div>
             </div>
 
@@ -45,7 +43,7 @@
         <!-- 滑块区域 - 绝对定位到底部 -->
         <div class="slider-area" ref="sliderContainer">
             <!-- 滑块轨道线 -->
-            <div class="slider-track"></div>
+            <!-- <div class="slider-track"></div> -->
             <!-- 可拖动的滑块小球 -->
             <div class="slider-dot" :style="{ left: dotPosition + 'px' }" @touchstart="startDrag">
                 <!-- 滑块小球的竖线 -->
@@ -93,13 +91,12 @@ export default {
             })
         },
         // 睡眠阶段线段的粗细（像素值）
-        lineWidth: { type: Number, default: 15 },
+        lineWidth: { type: Number, default: 36 },
         // 连接线的粗细（像素值）
         connectLineWidth: { type: Number, default: 1 }
     },
     data() {
         return {
-            currentIndex: 0,        // 当前索引（当前未使用）
             dotPosition: 0,         // 滑块小球的位置（像素值）
             isDragging: false,      // 是否正在拖动滑块
             showCursor: false,      // 是否显示游标线和提示框
@@ -123,23 +120,28 @@ export default {
             this.sleepData.forEach((point, index) => {
                 const x1 = index * segmentWidth;
                 const x2 = (index + 1) * segmentWidth;
-                const y = this.svgHeight - (point.value * this.svgHeight / 100);
+
+                // 调整 Y 轴映射，将 20-100 的数值映射到图表高度
+                const valueRange = 80;
+                const normalizedValue = Math.max(0, point.value - 20);
+                const y = this.svgHeight - (normalizedValue / valueRange * this.svgHeight);
 
                 // 计算粗线段的起止位置
                 let lineStart = x1;
                 let lineEnd = x2;
                 let connectionPath = '';
 
-                // 1. 处理与前一个点的连接：如果前一个点存在且高度不同，本段起点要向后缩，为连接曲线留出空间
+                // 1. 处理与前一个点的连接
                 const prevPoint = this.sleepData[index - 1];
                 if (prevPoint && Math.abs(prevPoint.value - point.value) > 0.1) {
                     lineStart += rX;
                 }
 
-                // 2. 处理与后一个点的连接：如果后一个点存在
+                // 2. 处理与后一个点的连接
                 const nextPoint = this.sleepData[index + 1];
                 if (nextPoint) {
-                    const nextY = this.svgHeight - (nextPoint.value * this.svgHeight / 100);
+                    const normNext = Math.max(0, nextPoint.value - 20);
+                    const nextY = this.svgHeight - (normNext / valueRange * this.svgHeight);
                     const dy = nextY - y;
 
                     // 如果高度不同，本段终点向前缩，并生成连接曲线
@@ -149,7 +151,6 @@ export default {
                         const sign = dy > 0 ? 1 : -1;
 
                         // 生成S形连接曲线 (细线)
-                        // 从粗线结束点开始 -> 曲线 -> 垂直线 -> 曲线 -> 下一段粗线开始点
                         connectionPath = `M ${lineEnd} ${y} 
                                         Q ${x2} ${y}, ${x2} ${y + sign * rY}
                                         L ${x2} ${nextY - sign * rY}
@@ -161,7 +162,6 @@ export default {
                     line: { x1: lineStart, x2: lineEnd, y },
                     connectionPath,
                     type: point.type,
-                    // 原始坐标保留
                     origX1: x1,
                     origX2: x2,
                     origY: y
@@ -169,6 +169,7 @@ export default {
             });
             return segments;
         },
+
         /**
          * 计算当前日期范围和睡眠时间
          * @returns {Object} 包含开始日期、入睡时间、结束日期、醒来时间
@@ -178,10 +179,75 @@ export default {
             const startData = this.sleepData[0];                        // 第一个数据点
             const endData = this.sleepData[this.sleepData.length - 1]; // 最后一个数据点
             return {
-                startDate: startData.date,      // 开始日期
-                sleepTime: startData.time,      // 入睡时间
-                endDate: endData.date,          // 结束日期
-                wakeTime: endData.time          // 醒来时间
+                startDate: startData.date,          // 开始日期
+                sleepTime: startData.startTime,     // 入睡时间
+                endDate: endData.date,              // 结束日期
+                wakeTime: endData.endTime           // 醒来时间
+            };
+        },
+
+        /**
+         * 计算当前选中索引
+         */
+        currentIndex() {
+            if (this.sleepData.length === 0 || this.sliderWidth === 0) return -1;
+            const centerPosition = this.dotPosition + 10;
+            const ratio = centerPosition / this.sliderWidth;
+            // 使用 Math.floor 确保均匀分布的每个片段都能被正确选中
+            const index = Math.floor(ratio * this.sleepData.length);
+            return Math.max(0, Math.min(index, this.sleepData.length - 1));
+        },
+        /**
+         * 计算当前选中片段的详情（类型、时长、起止时间）
+         */
+        currentSegmentDetails() {
+            if (this.currentIndex === -1) return null;
+
+            const currentPoint = this.sleepData[this.currentIndex];
+            if (!currentPoint) return null;
+
+            const type = currentPoint.type;
+
+            // 向前查找连续同类型片段的起点
+            let start = this.currentIndex;
+            while (start > 0 && this.sleepData[start - 1].type === type) {
+                start--;
+            }
+
+            // 向后查找连续同类型片段的终点
+            let end = this.currentIndex;
+            while (end < this.sleepData.length - 1 && this.sleepData[end + 1].type === type) {
+                end++;
+            }
+
+            const startSegment = this.sleepData[start];
+            const endSegment = this.sleepData[end];
+
+            // 计算时长（分钟）
+            let duration = 0;
+            try {
+                const parseTime = (t) => {
+                    const [h, m] = t.split(':').map(Number);
+                    return h * 60 + m;
+                };
+                let startMins = parseTime(startSegment.startTime);
+                let endMins = parseTime(endSegment.endTime);
+
+                // 处理跨天的情况（假设睡眠不超过24小时）
+                if (endMins < startMins) {
+                    endMins += 24 * 60;
+                }
+
+                duration = endMins - startMins;
+            } catch (e) {
+                console.error('Time calc error', e);
+            }
+
+            return {
+                typeName: this.getSleepTypeName(type),
+                duration,
+                startTime: startSegment.startTime,
+                endTime: endSegment.endTime
             };
         },
         /**
@@ -189,15 +255,8 @@ export default {
          * @returns {Object|null} 当前时间点的睡眠数据，包含时间、类型等信息
          */
         currentTimePoint() {
-            if (this.sleepData.length === 0 || this.sliderWidth === 0) return null;
-            // 计算滑块中心位置（小球半径为 10px）
-            const centerPosition = this.dotPosition + 10;
-            // 计算滑块在整个宽度中的比例
-            const ratio = centerPosition / this.sliderWidth;
-            // 根据比例计算对应的数据索引
-            const index = Math.round(ratio * (this.sleepData.length - 1));
-            // 返回对应索引的数据，确保索引在有效范围内
-            return this.sleepData[Math.max(0, Math.min(index, this.sleepData.length - 1))];
+            if (this.currentIndex === -1) return null;
+            return this.sleepData[this.currentIndex];
         },
         /**
          * 计算游标线的位置（滑块中心位置）
@@ -310,7 +369,7 @@ export default {
 .sleep-chart {
     position: relative;
     width: 100%;
-    padding: 0 16px 20px;
+    padding: 0 16px 16px;
     /* 底部增加 padding 给绝对定位的滑块 */
     background: #fff;
     border-radius: 16px;
@@ -324,7 +383,7 @@ export default {
 
 .sleep-svg {
     width: 100%;
-    height: 260px;
+    height: 200px;
 }
 
 /* 睡眠线段样式由 :stroke 属性动态设置，不再需要固定的 CSS 类 */
@@ -336,13 +395,12 @@ export default {
 /* 滑块区域 - 在图表底部和日期标签之间 */
 .slider-area {
     position: absolute;
-    bottom: -14px;
+    bottom: -10px;
     left: 16px;
     right: 16px;
-    /* 左右与 padding 对齐 */
-    height: 24px;
-    margin-top: 0px;
+    height: 20px;
     padding: 0 10px;
+    z-index: 10;
 }
 
 /* 滑块轨道线 */
@@ -361,12 +419,42 @@ export default {
     top: 0;
     width: 20px;
     height: 20px;
-    background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
-    border-radius: 50%;
+    /* Remove visuals from container, use ::before for the ball */
+    background: transparent;
+    border: none;
+    box-shadow: none;
     z-index: 20;
     touch-action: none;
+}
+
+/* The actual white ball - high z-index */
+.slider-dot::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
+    border-radius: 50%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(0, 0, 0, 0.08);
+    z-index: 2;
+}
+
+/* The fan shadow - low z-index */
+.slider-dot::after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 50px;
+    border-radius: 50%;
+    /* 径向渐变：上半部分灰色，下半部分透明 */
+    background: radial-gradient(circle at 50% 0%, #f7f8fa 0%, #f7f8fa 50%, transparent 0);
+    z-index: 1;
 }
 
 .slider-dot:active {
@@ -376,12 +464,12 @@ export default {
 /* 从小球向上延伸的竖线 - 穿过图表 */
 .dot-line {
     position: absolute;
-    bottom: 100%;
+    bottom: 80px;
     left: 50%;
     transform: translateX(-50%);
     width: 2px;
-    height: 330px;
-    background: linear-gradient(to bottom, rgba(255, 180, 100, 0.9), rgba(255, 200, 120, 0.6));
+    height: 180px;
+    background: linear-gradient(180deg, rgba(255, 150, 100, 0) 0%, rgba(255, 150, 100, 1) 50%, rgba(255, 150, 100, 0) 100%);
     pointer-events: none;
     border-radius: 1px;
 }
@@ -390,7 +478,7 @@ export default {
 .labels {
     display: flex;
     justify-content: space-between;
-    padding: 10px 10px 5px;
+    padding: 10px 0 5px;
 }
 
 .date-label {
@@ -400,9 +488,9 @@ export default {
 }
 
 .date {
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 600;
-    color: #333;
+    color: #999;
 }
 
 .time-label {
@@ -454,28 +542,32 @@ export default {
     color: #666;
 }
 
-.time-tooltip {
+
+.segment-info {
     position: absolute;
-    top: -10px;
+    top: 10px;
+    left: 50%;
     transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.85);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 8px;
-    white-space: nowrap;
-    font-size: 13px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    color: #888;
     pointer-events: none;
     z-index: 25;
+    white-space: nowrap;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    /* Ensures flex items are vertically centered */
 }
 
-.tooltip-time {
-    font-weight: 600;
-    margin-bottom: 2px;
+.info-type {
+    font-size: 14px;
+    color: #333;
+    /* 稍微深一点的颜色 */
 }
 
-.tooltip-type {
-    font-size: 12px;
-    opacity: 0.9;
+/* 移除旧的 time-tooltip 样式，或保留以防万一，但这里我们不再使用它 */
+.time-tooltip {
+    display: none;
 }
 </style>

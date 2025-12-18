@@ -36,18 +36,17 @@ export default {
     methods: {
         generateMockData() {
             return [
-                { date: '6/23', time: '02:00', type: 'light', value: 60 },
-                { date: '6/23', time: '02:30', type: 'light', value: 55 },
-                { date: '6/23', time: '03:00', type: 'deep', value: 25 },
-                { date: '6/23', time: '03:30', type: 'deep', value: 20 },
-                { date: '6/23', time: '04:00', type: 'deep', value: 30 },
-                { date: '6/23', time: '04:30', type: 'light', value: 50 },
-                { date: '6/23', time: '05:00', type: 'deep', value: 25 },
-                { date: '6/23', time: '05:30', type: 'deep', value: 20 },
-                { date: '6/23', time: '06:00', type: 'rem', value: 65 },
-                { date: '6/23', time: '06:30', type: 'rem', value: 60 },
-                { date: '6/23', time: '07:00', type: 'light', value: 55 },
-                { date: '6/23', time: '07:30', type: 'awake', value: 85 }
+                { date: '6/22', startTime: '22:00', endTime: '02:10', type: 'light', value: 60 },
+                { date: '6/23', startTime: '03:00', endTime: '04:30', type: 'deep', value: 25 },
+                { date: '6/23', startTime: '04:30', endTime: '05:00', type: 'light', value: 50 },
+                { date: '6/23', startTime: '05:00', endTime: '06:00', type: 'deep', value: 25 },
+                { date: '6/23', startTime: '06:00', endTime: '07:00', type: 'rem', value: 65 },
+                { date: '6/23', startTime: '07:00', endTime: '07:30', type: 'light', value: 55 },
+                { date: '6/23', startTime: '07:30', endTime: '08:00', type: 'awake', value: 85 },
+                { date: '6/23', startTime: '08:00', endTime: '08:10', type: 'light', value: 60 },
+                { date: '6/23', startTime: '08:10', endTime: '08:20', type: 'deep', value: 25 },
+                { date: '6/23', startTime: '08:20', endTime: '08:30', type: 'light', value: 50 },
+                { date: '6/23', startTime: '08:30', endTime: '08:40', type: 'deep', value: 25 },
             ]
         }
     }
