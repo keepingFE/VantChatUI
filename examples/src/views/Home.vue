@@ -127,6 +127,51 @@ const demos = [
     title: "HeartRateChart 心率数据图表",
     description: "心率数据展示组件，支持拖动查看不同时间点的心率",
   },
+  {
+    path: "/steps-chart",
+    title: "StepsChart 步数图表",
+    description: "步数数据展示组件，支持柱状图和折线图两种模式",
+  },
+  {
+    path: "/blood-oxygen-chart",
+    title: "BloodOxygenChart 血氧趋势图",
+    description: "血氧饱和度趋势展示组件，支持安全区域和异常值标记",
+  },
+  {
+    path: "/activity-ring-chart",
+    title: "ActivityRingChart 运动活动三环",
+    description: "类似 Apple Watch 的活动三环显示，展示移动、锻炼和站立数据",
+  },
+  {
+    path: "/weekly-stat-card",
+    title: "WeeklyStatCard 健康周报统计",
+    description: "健康周报统计卡片，展示一周健康数据汇总、趋势和成就",
+  },
+  {
+    path: "/body-weight-chart",
+    title: "BodyWeightChart 体重趋势图",
+    description: "体重和BMI趋势图，支持目标设定和健康范围提示",
+  },
+  {
+    path: "/blood-pressure-chart",
+    title: "BloodPressureChart 血压图表",
+    description: "血压趋势图，同时显示收缩压和舒张压，含健康范围标识",
+  },
+  {
+    path: "/water-intake-chart",
+    title: "WaterIntakeChart 水分摄入追踪",
+    description: "每日饮水量追踪，包含进度环、柱状图和饮水时间线",
+  },
+  {
+    path: "/calorie-balance-chart",
+    title: "CalorieBalanceChart 卡路里平衡图",
+    description: "卡路里摄入vs消耗对比图，帮助管理体重和能量平衡",
+  },
+  {
+    path: "/nutrition-pie-chart",
+    title: "NutritionPieChart 营养摄入饼图",
+    description: "营养素摄入比例可视化，支持饼图和环形图展示",
+  },
 ];
 
 const goToDemo = (path) => {

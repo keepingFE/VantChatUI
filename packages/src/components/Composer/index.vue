@@ -4,12 +4,8 @@
     <!-- 快捷回复栏 -->
     <div v-if="quickReplies && quickReplies.length > 0" class="quick-replies">
       <div class="quick-replies-scroll">
-        <div
-          v-for="(reply, index) in quickReplies"
-          :key="index"
-          class="quick-reply-item"
-          @click="handleQuickReply(reply)"
-        >
+        <div v-for="(reply, index) in quickReplies" :key="index" class="quick-reply-item"
+          @click="handleQuickReply(reply)">
           <van-icon v-if="reply.icon" :name="reply.icon" size="14" />
           <span class="quick-reply-text">{{ reply.text || reply }}</span>
         </div>
@@ -19,66 +15,34 @@
     <!-- 输入区域 -->
     <div class="composer-container">
       <!-- 左侧语音图标 -->
-      <div
-        v-if="showVoice"
-        class="composer-icon voice-icon"
-        :class="{ recording: isRecording }"
-        @click="handleVoiceClick"
-      >
-        <van-icon
-          name="volume-o"
-          size="24"
-          :color="isRecording ? '#ee0a24' : '#969799'"
-        />
+      <div v-if="showVoice" class="composer-icon voice-icon" :class="{ recording: isRecording }"
+        @click="handleVoiceClick">
+        <van-icon name="volume-o" size="24" :color="isRecording ? '#ee0a24' : '#969799'" />
       </div>
 
       <!-- 中间输入区域 -->
       <div class="composer-input-wrapper">
-        <van-field
-          v-model="inputValue"
-          type="textarea"
-          rows="1"
-          autosize
-          :maxlength="500"
-          placeholder="请输入..."
-          class="composer-field"
-          @keydown.enter.exact.prevent="handleSend"
-        />
+        <van-field v-model="inputValue" type="textarea" rows="1" autosize :maxlength="500" placeholder="请输入..."
+          class="composer-field" @keydown.enter.exact.prevent="handleSend" />
       </div>
 
       <!-- 右侧图标区域 -->
       <div class="composer-actions">
-        <!-- 表情图标 -->
-        <div v-if="showEmoji" class="composer-icon" @click="handleEmojiClick">
-          <van-icon name="smile-o" size="24" color="#969799" />
-        </div>
-
         <!-- 发送按钮或加号图标 -->
-        <van-button
-          v-if="inputValue.trim()"
-          type="primary"
-          size="small"
-          @click="handleSend"
-        >
+        <van-button v-if="inputValue.trim()" type="primary" size="small" @click="handleSend">
           发送
         </van-button>
         <div v-else class="composer-icon" @click="handleUploadClick">
           <van-icon name="plus" size="24" color="#969799" />
           <!-- 隐藏的文件上传输入框 -->
-          <input
-            ref="fileInputRef"
-            type="file"
-            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx"
-            multiple
-            style="display: none"
-            @change="handleFileChange"
-          />
+          <input ref="fileInputRef" type="file" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx" multiple
+            style="display: none" @change="handleFileChange" />
         </div>
       </div>
     </div>
 
     <!-- 表情选择器 -->
-    <EmojiPicker v-model:show="showEmojiPicker" @select="handleEmojiSelect" />
+    <!-- <EmojiPicker v-model:show="showEmojiPicker" @select="handleEmojiSelect" /> -->
   </div>
 </template>
 
@@ -509,7 +473,9 @@ const handleFileChange = (event) => {
 
 // 点击表情按钮
 const handleEmojiClick = () => {
+  console.log('[Composer] Emoji button clicked, setting showEmojiPicker to true');
   showEmojiPicker.value = true;
+  console.log('[Composer] showEmojiPicker.value:', showEmojiPicker.value);
 };
 
 // 选择表情
@@ -635,10 +601,12 @@ const handleQuickReply = (reply) => {
 }
 
 @keyframes recording-pulse {
+
   0%,
   100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.1);
   }
@@ -650,6 +618,7 @@ const handleQuickReply = (reply) => {
     height: 40px;
     opacity: 0.6;
   }
+
   100% {
     width: 60px;
     height: 60px;

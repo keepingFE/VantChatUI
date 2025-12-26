@@ -28,6 +28,15 @@ export { default as Waterfall } from "./components/Waterfall/index.vue";
 export { default as SleepChart } from "./components/SleepChart/index.vue";
 export { default as SleepRingChart } from "./components/SleepRingChart/index.vue";
 export { default as HeartRateChart } from "./components/HeartRateChart/index.vue";
+export { default as StepsChart } from "./components/StepsChart/index.vue";
+export { default as BloodOxygenChart } from "./components/BloodOxygenChart/index.vue";
+export { default as ActivityRingChart } from "./components/ActivityRingChart/index.vue";
+export { default as WeeklyStatCard } from "./components/WeeklyStatCard/index.vue";
+export { default as BodyWeightChart } from "./components/BodyWeightChart/index.vue";
+export { default as BloodPressureChart } from "./components/BloodPressureChart/index.vue";
+export { default as WaterIntakeChart } from "./components/WaterIntakeChart/index.vue";
+export { default as CalorieBalanceChart } from "./components/CalorieBalanceChart/index.vue";
+export { default as NutritionPieChart } from "./components/NutritionPieChart/index.vue";
 
 // 导出 Hooks
 export { useAutoScroll } from "./hooks/useAutoScroll.js";

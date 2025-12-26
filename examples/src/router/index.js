@@ -22,6 +22,15 @@ import WaterfallDemo from "../views/WaterfallDemo.vue";
 import SleepChartDemo from "../views/SleepChartDemo.vue";
 import SleepRingChartDemo from "../views/SleepRingChartDemo.vue";
 import HeartRateChartDemo from "../views/HeartRateChartDemo.vue";
+import StepsChartDemo from "../views/StepsChartDemo.vue";
+import BloodOxygenChartDemo from "../views/BloodOxygenChartDemo.vue";
+import ActivityRingChartDemo from "../views/ActivityRingChartDemo.vue";
+import WeeklyStatCardDemo from "../views/WeeklyStatCardDemo.vue";
+import BodyWeightChartDemo from "../views/BodyWeightChartDemo.vue";
+import BloodPressureChartDemo from "../views/BloodPressureChartDemo.vue";
+import WaterIntakeChartDemo from "../views/WaterIntakeChartDemo.vue";
+import CalorieBalanceChartDemo from "../views/CalorieBalanceChartDemo.vue";
+import NutritionPieChartDemo from "../views/NutritionPieChartDemo.vue";
 
 const routes = [
   {
@@ -138,6 +147,51 @@ const routes = [
     path: "/heart-rate-chart",
     name: "HeartRateChartDemo",
     component: HeartRateChartDemo,
+  },
+  {
+    path: "/steps-chart",
+    name: "StepsChartDemo",
+    component: StepsChartDemo,
+  },
+  {
+    path: "/blood-oxygen-chart",
+    name: "BloodOxygenChartDemo",
+    component: BloodOxygenChartDemo,
+  },
+  {
+    path: "/activity-ring-chart",
+    name: "ActivityRingChartDemo",
+    component: ActivityRingChartDemo,
+  },
+  {
+    path: "/weekly-stat-card",
+    name: "WeeklyStatCardDemo",
+    component: WeeklyStatCardDemo,
+  },
+  {
+    path: "/body-weight-chart",
+    name: "BodyWeightChartDemo",
+    component: BodyWeightChartDemo,
+  },
+  {
+    path: "/blood-pressure-chart",
+    name: "BloodPressureChartDemo",
+    component: BloodPressureChartDemo,
+  },
+  {
+    path: "/water-intake-chart",
+    name: "WaterIntakeChartDemo",
+    component: WaterIntakeChartDemo,
+  },
+  {
+    path: "/calorie-balance-chart",
+    name: "CalorieBalanceChartDemo",
+    component: CalorieBalanceChartDemo,
+  },
+  {
+    path: "/nutrition-pie-chart",
+    name: "NutritionPieChartDemo",
+    component: NutritionPieChartDemo,
   },
 ];
 
