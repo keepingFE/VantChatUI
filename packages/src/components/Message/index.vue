@@ -10,29 +10,53 @@
     <div v-else class="message-item" :class="[`message-${msg.position}`]">
       <!-- 头像 -->
       <div class="message-avatar">
-        <van-image round :src="msg.user?.avatar" :width="40" :height="40" fit="cover" />
+        <van-image
+          round
+          :src="msg.user?.avatar"
+          :width="40"
+          :height="40"
+          fit="cover"
+        />
       </div>
 
       <!-- 消息内容 -->
       <div class="message-content">
         <!-- 用户名 -->
-        <div v-if="msg.user?.name" class="message-username" :class="[`username-${msg.position}`]">
+        <div
+          v-if="msg.user?.name"
+          class="message-username"
+          :class="[`username-${msg.position}`]"
+        >
           {{ msg.user.name }}
         </div>
 
         <!-- 文本消息 -->
-        <div v-if="msg.type === 'text'" class="message-bubble" :class="[`bubble-${msg.position}`]">
+        <div
+          v-if="msg.type === 'text'"
+          class="message-bubble"
+          :class="[`bubble-${msg.position}`]"
+        >
           <span v-if="msg.typing" class="typing-text-wrapper">
-            <span v-for="(char, index) in displayTextArray" :key="index" class="typing-char"
-              :style="{ animationDelay: `${index * 0.05}s` }">{{ char }}</span>
+            {{ displayText
+            }}<span v-if="isTyping" class="typing-cursor">|</span>
           </span>
           <span v-else>{{ msg.content }}</span>
         </div>
 
         <!-- 图片消息 -->
-        <div v-else-if="msg.type === 'image'" class="message-image-bubble" :class="[`bubble-${msg.position}`]"
-          @click="handleImagePreview">
-          <van-image :src="msg.content" fit="contain" :width="200" height="200" radius="8">
+        <div
+          v-else-if="msg.type === 'image'"
+          class="message-image-bubble"
+          :class="[`bubble-${msg.position}`]"
+          @click="handleImagePreview"
+        >
+          <van-image
+            :src="msg.content"
+            fit="contain"
+            :width="200"
+            height="200"
+            radius="8"
+          >
             <template #error>
               <div class="image-error">加载失败</div>
             </template>
@@ -40,15 +64,26 @@
         </div>
 
         <!-- 文件消息 -->
-        <div v-else-if="msg.type === 'file'" class="message-file-bubble" :class="[`bubble-${msg.position}`]">
-          <div class="file-icon" :style="{ background: getFileIconBg(msg.file?.name) }">
+        <div
+          v-else-if="msg.type === 'file'"
+          class="message-file-bubble"
+          :class="[`bubble-${msg.position}`]"
+        >
+          <div
+            class="file-icon"
+            :style="{ background: getFileIconBg(msg.file?.name) }"
+          >
             <span class="file-ext">{{ getFileExt(msg.file?.name) }}</span>
           </div>
           <div class="file-info">
-            <div class="file-name">{{ msg.file?.name || '未知文件' }}</div>
+            <div class="file-name">{{ msg.file?.name || "未知文件" }}</div>
             <div class="file-meta">
-              <span class="file-size">{{ msg.file?.size || '0 KB' }}</span>
-              <span v-if="msg.file.downloadable !== false" class="file-download" @click.stop="handleFileDownload">
+              <span class="file-size">{{ msg.file?.size || "0 KB" }}</span>
+              <span
+                v-if="msg.file.downloadable !== false"
+                class="file-download"
+                @click.stop="handleFileDownload"
+              >
                 下载
               </span>
             </div>
@@ -60,131 +95,131 @@
 </template>
 
 <script setup>
-import { ref, watch, onMounted, onUnmounted } from 'vue'
-import { showImagePreview } from 'vant'
+import { ref, watch, onMounted, onUnmounted } from "vue";
+import { showImagePreview } from "vant";
 
 // Props 定义
 const props = defineProps({
   msg: {
     type: Object,
     required: true,
-    default: () => ({})
-  }
-})
+    default: () => ({}),
+  },
+});
 
 // 打字机效果
-const displayText = ref('')
-const displayTextArray = ref([])
-let typingTimer = null
+const displayText = ref("");
+const isTyping = ref(false);
+let typingTimer = null;
 
 // 开始打字效果
 const startTyping = () => {
-  if (!props.msg.typing || !props.msg.content) return
+  if (!props.msg.typing || !props.msg.content) return;
 
-  displayText.value = ''
-  displayTextArray.value = []
-  let currentIndex = 0
-  const text = props.msg.content
-  const speed = props.msg.typingSpeed || 50 // 默认 50ms/字符
+  displayText.value = "";
+  isTyping.value = true;
+  let currentIndex = 0;
+  const text = props.msg.content;
+  const speed = props.msg.typingSpeed || 50; // 默认 50ms/字符
 
   // 清除之前的定时器
   if (typingTimer) {
-    clearInterval(typingTimer)
+    clearInterval(typingTimer);
   }
 
   // 开始逐字显示
   typingTimer = setInterval(() => {
     if (currentIndex < text.length) {
-      displayText.value += text[currentIndex]
-      displayTextArray.value.push(text[currentIndex])
-      currentIndex++
+      displayText.value += text[currentIndex];
+      currentIndex++;
     } else {
       // 打字完成
-      clearInterval(typingTimer)
-      typingTimer = null
+      clearInterval(typingTimer);
+      typingTimer = null;
+      isTyping.value = false;
     }
-  }, speed)
-}
+  }, speed);
+};
 
 // 监听消息变化
 watch(
   () => props.msg,
   (newMsg) => {
-    if (newMsg.typing && newMsg.type === 'text') {
-      startTyping()
+    if (newMsg.typing && newMsg.type === "text") {
+      startTyping();
     } else {
-      displayText.value = newMsg.content || ''
-      displayTextArray.value = []
+      displayText.value = newMsg.content || "";
+      isTyping.value = false;
     }
   },
   { immediate: true, deep: true }
-)
+);
 
 // 组件挂载时
 onMounted(() => {
-  if (props.msg.typing && props.msg.type === 'text') {
-    startTyping()
+  if (props.msg.typing && props.msg.type === "text") {
+    startTyping();
   }
-})
+});
 
 // 组件卸载时清理定时器
 onUnmounted(() => {
   if (typingTimer) {
-    clearInterval(typingTimer)
-    typingTimer = null
+    clearInterval(typingTimer);
+    typingTimer = null;
   }
-})
+});
 
 // 图片预览
 const handleImagePreview = () => {
-  if (props.msg.type === 'image') {
+  if (props.msg.type === "image") {
     showImagePreview({
       images: [props.msg.content],
-      closeable: true
-    })
+      closeable: true,
+    });
   }
-}
+};
 
 // 获取文件扩展名
 const getFileExt = (fileName) => {
-  if (!fileName) return 'FILE'
-  const ext = fileName.split('.').pop()?.toUpperCase()
-  return ext || 'FILE'
-}
+  if (!fileName) return "FILE";
+  const ext = fileName.split(".").pop()?.toUpperCase();
+  return ext || "FILE";
+};
 
 // 获取文件图标背景色
 const getFileIconBg = (fileName) => {
-  if (!fileName) return '#ff9800'
+  if (!fileName) return "#ff9800";
 
-  const ext = fileName.split('.').pop()?.toLowerCase()
+  const ext = fileName.split(".").pop()?.toLowerCase();
 
   const colorMap = {
-    'pdf': '#ff4d4f',      // 红色
-    'doc': '#1890ff',      // 蓝色
-    'docx': '#1890ff',
-    'xls': '#52c41a',      // 绿色
-    'xlsx': '#52c41a',
-    'zip': '#ff9800',      // 橙色
-    'rar': '#ff9800',
-    '7z': '#ff9800',
-    'ppt': '#ff6b6b',      // 浅红色
-    'pptx': '#ff6b6b',
-    'txt': '#969799'       // 灰色
-  }
+    pdf: "#ff4d4f", // 红色
+    doc: "#1890ff", // 蓝色
+    docx: "#1890ff",
+    xls: "#52c41a", // 绿色
+    xlsx: "#52c41a",
+    zip: "#ff9800", // 橙色
+    rar: "#ff9800",
+    "7z": "#ff9800",
+    ppt: "#ff6b6b", // 浅红色
+    pptx: "#ff6b6b",
+    txt: "#969799", // 灰色
+  };
 
-  return colorMap[ext] || '#ff9800'
-}
+  return colorMap[ext] || "#ff9800";
+};
 
 // 文件下载
 const handleFileDownload = () => {
-  if (props.msg.type === 'file' && props.msg.file?.url) {
+  if (props.msg.type === "file" && props.msg.file?.url) {
     // 如果有下载 URL，触发下载
-    const link = document.createElement('a')
-    link.href = props.msg.file.url
-    link.download = props.msg.file.name || 'download'
-    link.click()
+    const link = document.createElement("a");
+    link.href = props.msg.file.url;
+    link.download = props.msg.file.name || "download";
+    link.click();
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -279,8 +314,6 @@ const handleFileDownload = () => {
   border-radius: 12px 2px 12px 12px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
-
-
 
 // ========== 图片消息 ==========
 .message-image-bubble {
@@ -401,19 +434,21 @@ const handleFileDownload = () => {
   display: inline;
 }
 
-.typing-char {
+.typing-cursor {
   display: inline-block;
-  opacity: 0;
-  animation: fadeIn 0.3s ease-in forwards;
+  color: #3b82f6;
+  font-weight: bold;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
+@keyframes blink {
+  0%,
+  100% {
     opacity: 1;
+  }
+  50% {
+    opacity: 0;
   }
 }
 </style>

@@ -4,13 +4,7 @@
     <div class="typing-item">
       <!-- 头像 -->
       <div v-if="avatar" class="typing-avatar">
-        <van-image
-          round
-          :src="avatar"
-          :width="40"
-          :height="40"
-          fit="cover"
-        />
+        <van-image round :src="avatar" :width="40" :height="40" fit="cover" />
       </div>
 
       <!-- 打字气泡 -->
@@ -29,13 +23,13 @@
 const props = defineProps({
   avatar: {
     type: String,
-    default: ''
+    default: "",
   },
   text: {
     type: String,
-    default: ''
-  }
-})
+    default: "",
+  },
+});
 </script>
 
 <style scoped lang="scss">
@@ -97,14 +91,13 @@ const props = defineProps({
 }
 
 @keyframes typing-bounce {
-  0%, 80%, 100% {
-    transform: scale(0.8);
-    opacity: 0.5;
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
   }
-  40% {
-    transform: scale(1);
-    opacity: 1;
+  30% {
+    transform: translateY(-5px);
   }
 }
 </style>
-

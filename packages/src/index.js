@@ -37,6 +37,25 @@ export { default as BloodPressureChart } from "./components/BloodPressureChart/i
 export { default as WaterIntakeChart } from "./components/WaterIntakeChart/index.vue";
 export { default as CalorieBalanceChart } from "./components/CalorieBalanceChart/index.vue";
 export { default as NutritionPieChart } from "./components/NutritionPieChart/index.vue";
+export { default as BloodSugarChart } from "./components/BloodSugarChart/index.vue";
+export { default as MoodTracker } from "./components/MoodTracker/index.vue";
+export { default as MedicationReminder } from "./components/MedicationReminder/index.vue";
+export { default as MenstrualCycleChart } from "./components/MenstrualCycleChart/index.vue";
+export { default as TemperatureChart } from "./components/TemperatureChart/index.vue";
+export { default as ExerciseDetailCard } from "./components/ExerciseDetailCard/index.vue";
+export { default as HealthScoreCard } from "./components/HealthScoreCard/index.vue";
+export { default as StressLevelChart } from "./components/StressLevelChart/index.vue";
+export { default as HRVChart } from "./components/HRVChart/index.vue";
+export { default as BreathingGuide } from "./components/BreathingGuide/index.vue";
+export { default as BodyFatScale } from "./components/BodyFatScale/index.vue";
+export { default as RunningDashboard } from "./components/RunningDashboard/index.vue";
+export { default as FastingTimer } from "./components/FastingTimer/index.vue";
+export { default as HabitTracker } from "./components/HabitTracker/index.vue";
+export { default as FoodLogList } from "./components/FoodLogList/index.vue";
+export { default as BodyMeasurements } from "./components/BodyMeasurements/index.vue";
+export { default as WorkoutPaceChart } from "./components/WorkoutPaceChart/index.vue";
+export { default as SportRouteView } from "./components/SportRouteView/index.vue";
+export { default as ECGChart } from "./components/ECGChart/index.vue";
 
 // 导出 Hooks
 export { useAutoScroll } from "./hooks/useAutoScroll.js";

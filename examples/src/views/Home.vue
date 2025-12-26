@@ -3,10 +3,15 @@
     <van-nav-bar title="ChatVant 组件示例" fixed />
 
     <div class="content">
-      <van-cell-group inset>
-        <van-cell v-for="demo in demos" :key="demo.path" :title="demo.title" :label="demo.description" is-link
-          @click="goToDemo(demo.path)" />
-      </van-cell-group>
+      <div v-for="demo in demos" :key="demo.path" class="demo-item">
+        <van-cell
+          :title="demo.title"
+          :label="demo.description"
+          is-link
+          center
+          @click="goToDemo(demo.path)"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -172,6 +177,101 @@ const demos = [
     title: "NutritionPieChart 营养摄入饼图",
     description: "营养素摄入比例可视化，支持饼图和环形图展示",
   },
+  {
+    path: "/blood-sugar-chart",
+    title: "BloodSugarChart 血糖趋势图",
+    description: "血糖监测图表，区分餐前餐后，支持健康范围分析",
+  },
+  {
+    path: "/mood-tracker",
+    title: "MoodTracker 心情追踪",
+    description: "心情日历组件，支持记录和统计心情分布",
+  },
+  {
+    path: "/medication-reminder",
+    title: "MedicationReminder 用药提醒",
+    description: "今日用药计划列表，支持打卡和状态管理",
+  },
+  {
+    path: "/menstrual-cycle-chart",
+    title: "MenstrualCycleChart 经期日历",
+    description: "女性健康周期追踪，包含排卵期和易孕期预测",
+  },
+  {
+    path: "/temperature-chart",
+    title: "TemperatureChart 体温趋势图",
+    description: "基础体温及发热记录图表，支持自动坐标轴缩放",
+  },
+  {
+    path: "/exercise-detail-card",
+    title: "ExerciseDetailCard 运动详情",
+    description: "单次运动记录卡片，展示心率区间和核心数据",
+  },
+  {
+    path: "/health-score-card",
+    title: "HealthScoreCard 健康评分",
+    description: "综合健康评分卡片，展示总分及各以维度得分",
+  },
+  {
+    path: "/stress-level-chart",
+    title: "StressLevelChart 压力水平",
+    description: "全天压力变化柱状图，支持自动颜色分级",
+  },
+  {
+    path: "/hrv-chart",
+    title: "HRVChart 心率变异性",
+    description: "HRV 趋势图表，监测身心恢复状态",
+  },
+  {
+    path: "/breathing-guide",
+    title: "BreathingGuide 呼吸训练",
+    description: "4-7-8 动态呼吸引导，缓解焦虑",
+  },
+  {
+    path: "/body-fat-scale",
+    title: "BodyFatScale 体脂称",
+    description: "体脂率仪表盘，展示身体成分分析",
+  },
+  {
+    path: "/running-dashboard",
+    title: "RunningDashboard 运动仪表盘",
+    description: "运动实时数据展示，包含配速、心率区间等",
+  },
+  {
+    path: "/fasting-timer",
+    title: "FastingTimer 断食计时",
+    description: "16:8 轻断食倒计时圆环",
+  },
+  {
+    path: "/habit-tracker",
+    title: "HabitTracker 习惯打卡",
+    description: "热力图打卡墙，记录生活习惯",
+  },
+  {
+    path: "/food-log-list",
+    title: "FoodLogList 饮食记录",
+    description: "一日三餐食物流水线",
+  },
+  {
+    path: "/body-measurements",
+    title: "BodyMeasurements 身体围度",
+    description: "记录腰围、臀围，展示变化趋势",
+  },
+  {
+    path: "/workout-pace-chart",
+    title: "WorkoutPaceChart 运动配速",
+    description: "可视化分析配速与海拔高度",
+  },
+  {
+    path: "/sport-route-view",
+    title: "SportRouteView 轨迹回放",
+    description: "地图轨迹回放组件",
+  },
+  {
+    path: "/ecg-chart",
+    title: "ECGChart 心电图",
+    description: "模拟单导联实时 ECG 波形",
+  },
 ];
 
 const goToDemo = (path) => {
@@ -188,8 +288,25 @@ const goToDemo = (path) => {
   overflow-x: hidden;
 }
 
+.home-page::-webkit-scrollbar {
+  width: 6px;
+}
+
+.home-page::-webkit-scrollbar-thumb {
+  background-color: #dbdbdb;
+  border-radius: 3px;
+}
+
+.home-page::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
 .content {
-  padding-top: 46px;
-  padding: 62px 16px 16px;
+  padding-top: 56px; /* NavBar height + 10px spacing */
+  padding-bottom: 20px;
+}
+
+.demo-item {
+  margin-bottom: 10px;
 }
 </style>

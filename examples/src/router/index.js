@@ -31,6 +31,25 @@ import BloodPressureChartDemo from "../views/BloodPressureChartDemo.vue";
 import WaterIntakeChartDemo from "../views/WaterIntakeChartDemo.vue";
 import CalorieBalanceChartDemo from "../views/CalorieBalanceChartDemo.vue";
 import NutritionPieChartDemo from "../views/NutritionPieChartDemo.vue";
+import BloodSugarChartDemo from "../views/BloodSugarChartDemo.vue";
+import MoodTrackerDemo from "../views/MoodTrackerDemo.vue";
+import MedicationReminderDemo from "../views/MedicationReminderDemo.vue";
+import MenstrualCycleChartDemo from "../views/MenstrualCycleChartDemo.vue";
+import TemperatureChartDemo from "../views/TemperatureChartDemo.vue";
+import ExerciseDetailCardDemo from "../views/ExerciseDetailCardDemo.vue";
+import HealthScoreCardDemo from "../views/HealthScoreCardDemo.vue";
+import StressLevelChartDemo from "../views/StressLevelChartDemo.vue";
+import HRVChartDemo from "../views/HRVChartDemo.vue";
+import BreathingGuideDemo from "../views/BreathingGuideDemo.vue";
+import BodyFatScaleDemo from "../views/BodyFatScaleDemo.vue";
+import RunningDashboardDemo from "../views/RunningDashboardDemo.vue";
+import FastingTimerDemo from "../views/FastingTimerDemo.vue";
+import HabitTrackerDemo from "../views/HabitTrackerDemo.vue";
+import FoodLogListDemo from "../views/FoodLogListDemo.vue";
+import BodyMeasurementsDemo from "../views/BodyMeasurementsDemo.vue";
+import WorkoutPaceChartDemo from "../views/WorkoutPaceChartDemo.vue";
+import SportRouteViewDemo from "../views/SportRouteViewDemo.vue";
+import ECGChartDemo from "../views/ECGChartDemo.vue";
 
 const routes = [
   {
@@ -192,6 +211,101 @@ const routes = [
     path: "/nutrition-pie-chart",
     name: "NutritionPieChartDemo",
     component: NutritionPieChartDemo,
+  },
+  {
+    path: "/blood-sugar-chart",
+    name: "BloodSugarChartDemo",
+    component: BloodSugarChartDemo,
+  },
+  {
+    path: "/mood-tracker",
+    name: "MoodTrackerDemo",
+    component: MoodTrackerDemo,
+  },
+  {
+    path: "/medication-reminder",
+    name: "MedicationReminderDemo",
+    component: MedicationReminderDemo,
+  },
+  {
+    path: "/menstrual-cycle-chart",
+    name: "MenstrualCycleChartDemo",
+    component: MenstrualCycleChartDemo,
+  },
+  {
+    path: "/temperature-chart",
+    name: "TemperatureChartDemo",
+    component: TemperatureChartDemo,
+  },
+  {
+    path: "/exercise-detail-card",
+    name: "ExerciseDetailCardDemo",
+    component: ExerciseDetailCardDemo,
+  },
+  {
+    path: "/health-score-card",
+    name: "HealthScoreCardDemo",
+    component: HealthScoreCardDemo,
+  },
+  {
+    path: "/stress-level-chart",
+    name: "StressLevelChartDemo",
+    component: StressLevelChartDemo,
+  },
+  {
+    path: "/hrv-chart",
+    name: "HRVChartDemo",
+    component: HRVChartDemo,
+  },
+  {
+    path: "/breathing-guide",
+    name: "BreathingGuideDemo",
+    component: BreathingGuideDemo,
+  },
+  {
+    path: "/body-fat-scale",
+    name: "BodyFatScaleDemo",
+    component: BodyFatScaleDemo,
+  },
+  {
+    path: "/running-dashboard",
+    name: "RunningDashboardDemo",
+    component: RunningDashboardDemo,
+  },
+  {
+    path: "/fasting-timer",
+    name: "FastingTimerDemo",
+    component: FastingTimerDemo,
+  },
+  {
+    path: "/habit-tracker",
+    name: "HabitTrackerDemo",
+    component: HabitTrackerDemo,
+  },
+  {
+    path: "/food-log-list",
+    name: "FoodLogListDemo",
+    component: FoodLogListDemo,
+  },
+  {
+    path: "/body-measurements",
+    name: "BodyMeasurementsDemo",
+    component: BodyMeasurementsDemo,
+  },
+  {
+    path: "/workout-pace-chart",
+    name: "WorkoutPaceChartDemo",
+    component: WorkoutPaceChartDemo,
+  },
+  {
+    path: "/sport-route-view",
+    name: "SportRouteViewDemo",
+    component: SportRouteViewDemo,
+  },
+  {
+    path: "/ecg-chart",
+    name: "ECGChartDemo",
+    component: ECGChartDemo,
   },
 ];
 
