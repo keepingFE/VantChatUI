@@ -56,7 +56,14 @@ export { default as BodyMeasurements } from "./components/BodyMeasurements/index
 export { default as WorkoutPaceChart } from "./components/WorkoutPaceChart/index.vue";
 export { default as SportRouteView } from "./components/SportRouteView/index.vue";
 export { default as ECGChart } from "./components/ECGChart/index.vue";
+export { default as MarkdownRenderer } from "./components/MarkdownRenderer/index.vue";
+export { default as MessageActions } from "./components/MessageActions/index.vue";
+export { default as QuickReplies } from "./components/QuickReplies/index.vue";
+export { default as ErrorMessage } from "./components/ErrorMessage/index.vue";
+export { default as RegenerateButton } from "./components/RegenerateButton/index.vue";
+export { default as FeedbackButton } from "./components/FeedbackButton/index.vue";
 
 // 导出 Hooks
 export { useAutoScroll } from "./hooks/useAutoScroll.js";
 export { useTypewriter } from "./hooks/useTypewriter.js";
+export { useStreamingResponse } from "./hooks/useStreamingResponse.js";

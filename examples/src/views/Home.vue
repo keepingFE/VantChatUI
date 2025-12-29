@@ -23,6 +23,11 @@ const router = useRouter();
 
 const demos = [
   {
+    path: "/ai-chat",
+    title: "✨ AI 综合演示 ✨",
+    description: "集成 Markdown、流式输出、快捷回复的完整 AI 聊天示例",
+  },
+  {
     path: "/full",
     title: "完整示例",
     description: "包含所有功能的完整聊天示例",
@@ -271,6 +276,26 @@ const demos = [
     path: "/ecg-chart",
     title: "ECGChart 心电图",
     description: "模拟单导联实时 ECG 波形",
+  },
+  {
+    path: "/markdown-renderer",
+    title: "MarkdownRenderer 渲染器",
+    description: "AI 聊天 Markdown 渲染，支持代码高亮与流式输出",
+  },
+  {
+    path: "/message-actions",
+    title: "MessageActions 消息操作栏",
+    description: "消息底部操作栏，支持复制、重试、评价",
+  },
+  {
+    path: "/quick-replies",
+    title: "QuickReplies 快捷回复",
+    description: "横向滚动的快捷建议气泡，常用于 AI 引导",
+  },
+  {
+    path: "/error-message",
+    title: "ErrorMessage 错误提示",
+    description: "AI 生成失败时的错误提示，支持重试操作",
   },
 ];
 

@@ -50,6 +50,11 @@ import BodyMeasurementsDemo from "../views/BodyMeasurementsDemo.vue";
 import WorkoutPaceChartDemo from "../views/WorkoutPaceChartDemo.vue";
 import SportRouteViewDemo from "../views/SportRouteViewDemo.vue";
 import ECGChartDemo from "../views/ECGChartDemo.vue";
+import MarkdownRendererDemo from "../views/MarkdownRendererDemo.vue";
+import MessageActionsDemo from "../views/MessageActionsDemo.vue";
+import QuickRepliesDemo from "../views/QuickRepliesDemo.vue";
+import ErrorMessageDemo from "../views/ErrorMessageDemo.vue";
+import AIChatDemo from "../views/AIChatDemo.vue";
 
 const routes = [
   {
@@ -306,6 +311,31 @@ const routes = [
     path: "/ecg-chart",
     name: "ECGChartDemo",
     component: ECGChartDemo,
+  },
+  {
+    path: "/markdown-renderer",
+    name: "MarkdownRendererDemo",
+    component: MarkdownRendererDemo,
+  },
+  {
+    path: "/message-actions",
+    name: "MessageActionsDemo",
+    component: MessageActionsDemo,
+  },
+  {
+    path: "/quick-replies",
+    name: "QuickRepliesDemo",
+    component: QuickRepliesDemo,
+  },
+  {
+    path: "/error-message",
+    name: "ErrorMessageDemo",
+    component: ErrorMessageDemo,
+  },
+  {
+    path: "/ai-chat",
+    name: "AIChatDemo",
+    component: AIChatDemo,
   },
 ];
 
