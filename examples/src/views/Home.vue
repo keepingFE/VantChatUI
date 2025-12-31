@@ -4,13 +4,7 @@
 
     <div class="content">
       <div v-for="demo in demos" :key="demo.path" class="demo-item">
-        <van-cell
-          :title="demo.title"
-          :label="demo.description"
-          is-link
-          center
-          @click="goToDemo(demo.path)"
-        />
+        <van-cell :title="demo.title" :label="demo.description" is-link center @click="goToDemo(demo.path)" />
       </div>
     </div>
   </div>
@@ -26,6 +20,91 @@ const demos = [
     path: "/ai-chat",
     title: "✨ AI 综合演示 ✨",
     description: "集成 Markdown、流式输出、快捷回复的完整 AI 聊天示例",
+  },
+  {
+    path: "/swimming-chart",
+    title: "SwimmingChart 游泳数据",
+    description: "游泳数据图表，泳姿分布、SWOLF、配速趋势",
+  },
+  {
+    path: "/cycling-chart",
+    title: "CyclingChart 骑行数据",
+    description: "骑行数据图表，速度、踏频、功率、爬升分析",
+  },
+  {
+    path: "/workout-calendar",
+    title: "WorkoutCalendar 运动日历",
+    description: "运动日历组件，月历视图、运动类型标记、月度统计",
+  },
+  {
+    path: "/sleep-score-card",
+    title: "SleepScoreCard 睡眠评分",
+    description: "睡眠评分卡片，综合评分、因素分析、改善建议",
+  },
+  {
+    path: "/respiratory-rate-chart",
+    title: "RespiratoryRateChart 呼吸频率",
+    description: "呼吸频率趋势图，实时监测、正常范围标记",
+  },
+  {
+    path: "/posture-analysis",
+    title: "PostureAnalysis 体态分析",
+    description: "体态分析图，可视化示意、各部位评分、改善建议",
+  },
+  {
+    path: "/rehab-progress",
+    title: "RehabProgress 康复进度",
+    description: "康复训练进度，训练项目、里程碑、疼痛追踪",
+  },
+  {
+    path: "/leaderboard-card",
+    title: "LeaderboardCard 运动排行榜",
+    description: "运动排行榜，前三名领奖台、个人排名、趋势显示",
+  },
+  {
+    path: "/goal-progress-card",
+    title: "GoalProgressCard 目标进度",
+    description: "目标达成进度卡片，进度条、里程碑、激励信息",
+  },
+  {
+    path: "/sedentary-reminder",
+    title: "SedentaryReminder 久坐提醒",
+    description: "久坐提醒组件，计时器、活动建议、每日统计",
+  },
+  {
+    path: "/audio-waveform",
+    title: "AudioWaveform 录音波形图",
+    description: "录音时展示的动态波形图动画，支持计时器和音量指示",
+  },
+  {
+    path: "/floating-button",
+    title: "FloatingButton 悬浮按钮",
+    description: "可在页面可视区范围内任意拖动的悬浮按钮",
+  },
+  {
+    path: "/back-to-top",
+    title: "BackToTop 返回顶部",
+    description: "滚动页面后自动显示返回顶部按钮，平滑滚动到顶部",
+  },
+  {
+    path: "/strength-training-chart",
+    title: "StrengthTrainingChart 力量训练",
+    description: "力量训练记录，组数、重量、次数追踪，训练量统计",
+  },
+  {
+    path: "/workout-zone-chart",
+    title: "WorkoutZoneChart 运动强度区间",
+    description: "心率区间分布图，热身、燃脂、有氧、无氧、极限区分析",
+  },
+  {
+    path: "/achievement-badge",
+    title: "AchievementBadge 成就徽章",
+    description: "运动成就徽章，支持不同稀有度、等级、解锁动画",
+  },
+  {
+    path: "/challenge-card",
+    title: "ChallengeCard 挑战卡片",
+    description: "运动挑战活动卡片，进度追踪、奖励展示、社交互动",
   },
   {
     path: "/full",
@@ -46,11 +125,6 @@ const demos = [
     path: "/file",
     title: "文件上传",
     description: "支持图片和文档上传功能",
-  },
-  {
-    path: "/emoji",
-    title: "表情选择",
-    description: "Emoji 表情选择器",
   },
   {
     path: "/system-message",
@@ -327,7 +401,8 @@ const goToDemo = (path) => {
 }
 
 .content {
-  padding-top: 56px; /* NavBar height + 10px spacing */
+  padding-top: 56px;
+  /* NavBar height + 10px spacing */
   padding-bottom: 20px;
 }
 

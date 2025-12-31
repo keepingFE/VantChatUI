@@ -41,15 +41,12 @@
       </div>
     </div>
 
-    <!-- 表情选择器 -->
-    <!-- <EmojiPicker v-model:show="showEmojiPicker" @select="handleEmojiSelect" /> -->
   </div>
 </template>
 
 <script setup>
 import { ref, onUnmounted } from "vue";
 import { showToast } from "vant";
-import EmojiPicker from "../EmojiPicker/index.vue";
 
 // Props 定义
 const props = defineProps({
@@ -62,11 +59,7 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
-  // 是否显示表情按钮
-  showEmoji: {
-    type: Boolean,
-    default: false,
-  },
+
   // 快捷回复列表
   quickReplies: {
     type: Array,
@@ -80,7 +73,6 @@ const emit = defineEmits([
   "send",
   "upload",
   "uploadError",
-  "emoji",
   "voiceStart", // 开始录音
   "voiceEnd", // 结束录音
   "voiceCancel", // 取消录音
@@ -92,9 +84,6 @@ const inputValue = ref(props.modelValue);
 
 // 文件上传输入框引用
 const fileInputRef = ref(null);
-
-// 表情选择器显示状态
-const showEmojiPicker = ref(false);
 
 // ========== 录音相关状态 ==========
 const isRecording = ref(false); // 是否正在录音
@@ -469,21 +458,6 @@ const handleFileChange = (event) => {
     // 清空 input，允许重复选择同一文件
     event.target.value = "";
   }
-};
-
-// 点击表情按钮
-const handleEmojiClick = () => {
-  console.log('[Composer] Emoji button clicked, setting showEmojiPicker to true');
-  showEmojiPicker.value = true;
-  console.log('[Composer] showEmojiPicker.value:', showEmojiPicker.value);
-};
-
-// 选择表情
-const handleEmojiSelect = (emoji) => {
-  // 将表情插入到输入框
-  inputValue.value += emoji;
-  emit("update:modelValue", inputValue.value);
-  emit("emoji", emoji);
 };
 
 // 快捷回复点击

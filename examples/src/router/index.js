@@ -4,7 +4,6 @@ import FullDemo from "../views/FullDemo.vue";
 import BasicDemo from "../views/BasicDemo.vue";
 import TypingDemo from "../views/TypingDemo.vue";
 import FileDemo from "../views/FileDemo.vue";
-import EmojiDemo from "../views/EmojiDemo.vue";
 import SystemMessageDemo from "../views/SystemMessageDemo.vue";
 import MessageStatusDemo from "../views/MessageStatusDemo.vue";
 import FileCardDemo from "../views/FileCardDemo.vue";
@@ -55,6 +54,23 @@ import MessageActionsDemo from "../views/MessageActionsDemo.vue";
 import QuickRepliesDemo from "../views/QuickRepliesDemo.vue";
 import ErrorMessageDemo from "../views/ErrorMessageDemo.vue";
 import AIChatDemo from "../views/AIChatDemo.vue";
+import SwimmingChartDemo from "../views/SwimmingChartDemo.vue";
+import CyclingChartDemo from "../views/CyclingChartDemo.vue";
+import WorkoutCalendarDemo from "../views/WorkoutCalendarDemo.vue";
+import SleepScoreCardDemo from "../views/SleepScoreCardDemo.vue";
+import RespiratoryRateChartDemo from "../views/RespiratoryRateChartDemo.vue";
+import PostureAnalysisDemo from "../views/PostureAnalysisDemo.vue";
+import RehabProgressDemo from "../views/RehabProgressDemo.vue";
+import LeaderboardCardDemo from "../views/LeaderboardCardDemo.vue";
+import GoalProgressCardDemo from "../views/GoalProgressCardDemo.vue";
+import SedentaryReminderDemo from "../views/SedentaryReminderDemo.vue";
+import AudioWaveformDemo from "../views/AudioWaveformDemo.vue";
+import FloatingButtonDemo from "../views/FloatingButtonDemo.vue";
+import BackToTopDemo from "../views/BackToTopDemo.vue";
+import StrengthTrainingChartDemo from "../views/StrengthTrainingChartDemo.vue";
+import WorkoutZoneChartDemo from "../views/WorkoutZoneChartDemo.vue";
+import AchievementBadgeDemo from "../views/AchievementBadgeDemo.vue";
+import ChallengeCardDemo from "../views/ChallengeCardDemo.vue";
 
 const routes = [
   {
@@ -81,11 +97,6 @@ const routes = [
     path: "/file",
     name: "FileDemo",
     component: FileDemo,
-  },
-  {
-    path: "/emoji",
-    name: "EmojiDemo",
-    component: EmojiDemo,
   },
   {
     path: "/system-message",
@@ -336,6 +347,91 @@ const routes = [
     path: "/ai-chat",
     name: "AIChatDemo",
     component: AIChatDemo,
+  },
+  {
+    path: "/swimming-chart",
+    name: "SwimmingChartDemo",
+    component: SwimmingChartDemo,
+  },
+  {
+    path: "/cycling-chart",
+    name: "CyclingChartDemo",
+    component: CyclingChartDemo,
+  },
+  {
+    path: "/workout-calendar",
+    name: "WorkoutCalendarDemo",
+    component: WorkoutCalendarDemo,
+  },
+  {
+    path: "/sleep-score-card",
+    name: "SleepScoreCardDemo",
+    component: SleepScoreCardDemo,
+  },
+  {
+    path: "/respiratory-rate-chart",
+    name: "RespiratoryRateChartDemo",
+    component: RespiratoryRateChartDemo,
+  },
+  {
+    path: "/posture-analysis",
+    name: "PostureAnalysisDemo",
+    component: PostureAnalysisDemo,
+  },
+  {
+    path: "/rehab-progress",
+    name: "RehabProgressDemo",
+    component: RehabProgressDemo,
+  },
+  {
+    path: "/leaderboard-card",
+    name: "LeaderboardCardDemo",
+    component: LeaderboardCardDemo,
+  },
+  {
+    path: "/goal-progress-card",
+    name: "GoalProgressCardDemo",
+    component: GoalProgressCardDemo,
+  },
+  {
+    path: "/sedentary-reminder",
+    name: "SedentaryReminderDemo",
+    component: SedentaryReminderDemo,
+  },
+  {
+    path: "/audio-waveform",
+    name: "AudioWaveformDemo",
+    component: AudioWaveformDemo,
+  },
+  {
+    path: "/floating-button",
+    name: "FloatingButtonDemo",
+    component: FloatingButtonDemo,
+  },
+  {
+    path: "/back-to-top",
+    name: "BackToTopDemo",
+    component: BackToTopDemo,
+  },
+  {
+    path: "/strength-training-chart",
+    name: "StrengthTrainingChartDemo",
+    component: StrengthTrainingChartDemo,
+  },
+  {
+    path: "/workout-zone-chart",
+    name: "WorkoutZoneChartDemo",
+    component: WorkoutZoneChartDemo,
+  },
+  {
+    path: "/achievement-badge",
+    name: "AchievementBadgeDemo",
+    component: AchievementBadgeDemo,
+  },
+  {
+    path: "/challenge-card",
+    name: "ChallengeCardDemo",
+    component: ChallengeCardDemo,
   },
 ];
 

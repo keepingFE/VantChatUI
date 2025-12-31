@@ -7,9 +7,10 @@ export { default as Message } from "./components/Message/index.vue";
 export { default as Composer } from "./components/Composer/index.vue";
 export { default as Typing } from "./components/Typing/index.vue";
 export { default as Thinking } from "./components/Thinking/index.vue";
-export { default as EmojiPicker } from "./components/EmojiPicker/index.vue";
+
 export { default as SystemMessage } from "./components/SystemMessage/index.vue";
 export { default as MessageStatus } from "./components/MessageStatus/index.vue";
+export { default as File } from "./components/File/index.vue";
 export { default as FileCard } from "./components/FileCard/index.vue";
 export { default as Card } from "./components/Card/index.vue";
 export { default as Search } from "./components/Search/index.vue";
@@ -62,6 +63,23 @@ export { default as QuickReplies } from "./components/QuickReplies/index.vue";
 export { default as ErrorMessage } from "./components/ErrorMessage/index.vue";
 export { default as RegenerateButton } from "./components/RegenerateButton/index.vue";
 export { default as FeedbackButton } from "./components/FeedbackButton/index.vue";
+export { default as SwimmingChart } from "./components/SwimmingChart/index.vue";
+export { default as CyclingChart } from "./components/CyclingChart/index.vue";
+export { default as WorkoutCalendar } from "./components/WorkoutCalendar/index.vue";
+export { default as SleepScoreCard } from "./components/SleepScoreCard/index.vue";
+export { default as RespiratoryRateChart } from "./components/RespiratoryRateChart/index.vue";
+export { default as PostureAnalysis } from "./components/PostureAnalysis/index.vue";
+export { default as RehabProgress } from "./components/RehabProgress/index.vue";
+export { default as LeaderboardCard } from "./components/LeaderboardCard/index.vue";
+export { default as GoalProgressCard } from "./components/GoalProgressCard/index.vue";
+export { default as SedentaryReminder } from "./components/SedentaryReminder/index.vue";
+export { default as AudioWaveform } from "./components/AudioWaveform/index.vue";
+export { default as FloatingButton } from "./components/FloatingButton/index.vue";
+export { default as BackToTop } from "./components/BackToTop/index.vue";
+export { default as StrengthTrainingChart } from "./components/StrengthTrainingChart/index.vue";
+export { default as WorkoutZoneChart } from "./components/WorkoutZoneChart/index.vue";
+export { default as AchievementBadge } from "./components/AchievementBadge/index.vue";
+export { default as ChallengeCard } from "./components/ChallengeCard/index.vue";
 
 // 导出 Hooks
 export { useAutoScroll } from "./hooks/useAutoScroll.js";

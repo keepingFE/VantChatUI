@@ -21,8 +21,8 @@ ChatVant 是一个基于 **Vue 3** 和 **Vant 4** 构建的轻量级、移动优
   聊天界面的主容器组件，管理消息列表和输入区域布局
 - **Message**: Message bubble component, supports text, images and other message types with left/right positioning  
   消息气泡组件，支持文本、图片等多种消息类型，可设置左右位置
-- **Composer**: Message input component with support for text input, file uploads, and emoji selection  
-  消息输入组件，支持文本输入、文件上传和表情选择
+- **Composer**: Message input component with support for text input and file uploads  
+  消息输入组件，支持文本输入和文件上传
 - **SystemMessage**: System message component for displaying system notifications (e.g., "User joined")  
   系统消息组件，用于显示系统提示信息（如"用户已加入"）
 - **MessageStatus**: Message status component showing delivery states (sending, delivered, read, etc.)  
@@ -37,8 +37,6 @@ ChatVant 是一个基于 **Vue 3** 和 **Vant 4** 构建的轻量级、移动优
 
 ### Input Enhancement | 输入增强
 
-- **EmojiPicker**: Emoji picker component providing emoji selection functionality  
-  表情选择器组件，提供表情符号选择功能
 - **RichEditor**: Rich text editor component with advanced text editing features  
   富文本编辑器组件，支持更丰富的文本编辑功能
 
