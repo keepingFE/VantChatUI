@@ -220,6 +220,10 @@ ChatVant 是一个基于 **Vue 3** 和 **Vant 4** 构建的轻量级、移动优
 
 ### Media Components | 媒体组件
 
+- **VideoPlayer**: Video player component with full playback controls, fullscreen support, and responsive design  
+  视频播放器组件，支持完整的播放控制、全屏功能和响应式设计
+- **AudioPlayer**: Audio player component with cover art, playback controls, and customizable theme  
+  音频播放器组件，支持封面图、播放控制和自定义主题
 - **AudioWaveform**: Audio waveform component for audio visualization  
   音频波形组件，用于音频可视化
 
