@@ -107,6 +107,16 @@ const demos = [
     description: "运动挑战活动卡片，进度追踪、奖励展示、社交互动",
   },
   {
+    path: "/video-player",
+    title: "VideoPlayer 视频播放器",
+    description: "功能完整的视频播放器，支持播放控制、进度条、音量调节、全屏",
+  },
+  {
+    path: "/audio-player",
+    title: "AudioPlayer 音频播放器",
+    description: "移动端音频播放组件，支持响应式适配、播放控制、进度条、音量调节",
+  },
+  {
     path: "/full",
     title: "完整示例",
     description: "包含所有功能的完整聊天示例",

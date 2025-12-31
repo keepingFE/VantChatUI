@@ -80,6 +80,8 @@ export { default as StrengthTrainingChart } from "./components/StrengthTrainingC
 export { default as WorkoutZoneChart } from "./components/WorkoutZoneChart/index.vue";
 export { default as AchievementBadge } from "./components/AchievementBadge/index.vue";
 export { default as ChallengeCard } from "./components/ChallengeCard/index.vue";
+export { default as VideoPlayer } from "./components/VideoPlayer/index.vue";
+export { default as AudioPlayer } from "./components/AudioPlayer/index.vue";
 
 // 导出 Hooks
 export { useAutoScroll } from "./hooks/useAutoScroll.js";

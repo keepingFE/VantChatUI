@@ -1,14 +1,7 @@
 <!-- File: packages/src/components/CheckboxGroup/index.vue -->
 <template>
-  <van-checkbox-group
-    v-model="checkedList"
-    :disabled="disabled"
-    :direction="direction"
-    :icon-size="iconSize"
-    :checked-color="checkedColor"
-    :max="max"
-    @change="handleChange"
-  >
+  <van-checkbox-group v-model="checkedList" :disabled="disabled" :direction="direction" :icon-size="iconSize"
+    :checked-color="checkedColor" :max="max" @change="handleChange">
     <slot></slot>
   </van-checkbox-group>
 </template>

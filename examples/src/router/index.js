@@ -71,6 +71,8 @@ import StrengthTrainingChartDemo from "../views/StrengthTrainingChartDemo.vue";
 import WorkoutZoneChartDemo from "../views/WorkoutZoneChartDemo.vue";
 import AchievementBadgeDemo from "../views/AchievementBadgeDemo.vue";
 import ChallengeCardDemo from "../views/ChallengeCardDemo.vue";
+import VideoPlayerDemo from "../views/VideoPlayerDemo.vue";
+import AudioPlayerDemo from "../views/AudioPlayerDemo.vue";
 
 const routes = [
   {
@@ -432,6 +434,16 @@ const routes = [
     path: "/challenge-card",
     name: "ChallengeCardDemo",
     component: ChallengeCardDemo,
+  },
+  {
+    path: "/video-player",
+    name: "VideoPlayerDemo",
+    component: VideoPlayerDemo,
+  },
+  {
+    path: "/audio-player",
+    name: "AudioPlayerDemo",
+    component: AudioPlayerDemo,
   },
 ];
 
