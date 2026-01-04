@@ -83,6 +83,11 @@ export { default as AchievementBadge } from "./components/AchievementBadge/index
 export { default as ChallengeCard } from "./components/ChallengeCard/index.vue";
 export { default as VideoPlayer } from "./components/VideoPlayer/index.vue";
 export { default as AudioPlayer } from "./components/AudioPlayer/index.vue";
+export { default as Gallery } from "./components/Gallery/index.vue";
+export { default as VideoMessage } from "./components/Video/index.vue";
+export { default as AudioMessage } from "./components/Audio/index.vue";
+export { default as TextMessage } from "./components/Text/index.vue";
+export { default as FormMessage } from "./components/Form/index.vue";
 
 // 新增高优先级组件
 export { default as Navbar } from "./components/Navbar/index.vue";

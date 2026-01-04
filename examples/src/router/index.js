@@ -96,6 +96,11 @@ import TagDemo from "../views/TagDemo.vue";
 import ProgressDemo from "../views/ProgressDemo.vue";
 import StepperDemo from "../views/StepperDemo.vue";
 import SwitchDemo from "../views/SwitchDemo.vue";
+import GalleryDemo from "../views/GalleryDemo.vue";
+import VideoMessageDemo from "../views/VideoDemo.vue";
+import AudioMessageDemo from "../views/AudioDemo.vue";
+import TextMessageDemo from "../views/TextDemo.vue";
+import FormDemo from "../views/FormDemo.vue";
 
 const routes = [
   {
@@ -467,6 +472,31 @@ const routes = [
     path: "/audio-player",
     name: "AudioPlayerDemo",
     component: AudioPlayerDemo,
+  },
+  {
+    path: "/gallery",
+    name: "GalleryDemo",
+    component: GalleryDemo,
+  },
+  {
+    path: "/video-message",
+    name: "VideoMessageDemo",
+    component: VideoMessageDemo,
+  },
+  {
+    path: "/audio-message",
+    name: "AudioMessageDemo",
+    component: AudioMessageDemo,
+  },
+  {
+    path: "/text-message",
+    name: "TextMessageDemo",
+    component: TextMessageDemo,
+  },
+  {
+    path: "/form-message",
+    name: "FormDemo",
+    component: FormDemo,
   },
   {
     path: "/navbar",

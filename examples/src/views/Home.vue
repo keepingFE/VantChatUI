@@ -232,6 +232,31 @@ const demos = [
     description: "移动端音频播放组件，支持响应式适配、播放控制、进度条、音量调节",
   },
   {
+    path: "/gallery",
+    title: "🆕 Gallery 图片画廊",
+    description: "图片网格展示组件，支持预览、滑动、数量限制和响应式布局",
+  },
+  {
+    path: "/video-message",
+    title: "🆕 Video 视频消息",
+    description: "轻量级视频消息组件，支持缩略图、播放控制、时长显示",
+  },
+  {
+    path: "/audio-message",
+    title: "🆕 Audio 音频消息",
+    description: "语音消息组件，支持波形动画、播放控制和时长显示",
+  },
+  {
+    path: "/text-message",
+    title: "🆕 Text 文本消息",
+    description: "文本消息组件，支持链接、@提及、话题标签识别和自定义解析",
+  },
+  {
+    path: "/form-message",
+    title: "🆕 Form 表单消息",
+    description: "表单消息组件，支持多种输入类型、验证和自定义样式",
+  },
+  {
     path: "/full",
     title: "完整示例",
     description: "包含所有功能的完整聊天示例",
