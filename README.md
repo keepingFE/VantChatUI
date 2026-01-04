@@ -88,6 +88,50 @@ ChatVant 是一个基于 **Vue 3** 和 **Vant 4** 构建的轻量级、移动优
   Markdown 内容渲染器组件
 - **ChunkUploader**: Chunk file uploader component for large files  
   分片文件上传组件，用于大文件上传
+- **Badge**: Badge component for displaying notification counts or status  
+  徽章组件，用于显示通知数量或状态
+- **Tag**: Tag component for labeling and categorization  
+  标签组件，用于标记和分类
+- **Divider**: Divider component for content separation  
+  分割线组件，用于内容分隔
+- **Empty**: Empty state component for displaying no-data scenarios  
+  空状态组件，用于显示无数据场景
+- **Progress**: Progress bar component for showing task completion  
+  进度条组件，用于显示任务完成进度
+- **Skeleton**: Skeleton screen component for loading states  
+  骨架屏组件，用于加载状态展示
+- **Stepper**: Stepper component for numeric input with increment/decrement  
+  步进器组件，用于数字输入的增减操作
+- **Switch**: Switch component for toggle on/off states  
+  开关组件，用于切换开关状态
+- **Time**: Time display component for formatting and showing time  
+  时间显示组件，用于格式化和显示时间
+- **Bubble**: Bubble component for chat-like bubble displays  
+  气泡组件，用于聊天式气泡展示
+- **Carousel**: Carousel component for image or content sliding  
+  轮播图组件，用于图片或内容滑动展示
+- **ActionSheet**: Action sheet component for bottom action menus  
+  操作面板组件，用于底部操作菜单
+- **Modal**: Modal dialog component for overlaying content  
+  模态框组件，用于覆盖层内容展示
+- **Popup**: Popup component for flexible popup displays  
+  弹出层组件，用于灵活的弹出展示
+- **Toast**: Toast notification component for brief messages  
+  轻提示组件，用于简短消息提示
+- **Navbar**: Navigation bar component for page headers  
+  导航栏组件，用于页面头部导航
+- **Toolbar**: Toolbar component for action buttons and tools  
+  工具栏组件，用于操作按钮和工具集合
+- **List**: List component for displaying data in list format  
+  列表组件，用于以列表格式展示数据
+- **ScrollView**: Scroll view component for scrollable content areas  
+  滚动视图组件，用于可滚动内容区域
+- **InfiniteScroll**: Infinite scroll component for loading more content  
+  无限滚动组件，用于加载更多内容
+- **RichText**: Rich text display component for formatted text rendering  
+  富文本显示组件，用于格式化文本渲染
+- **Recorder**: Audio recorder component for voice recording  
+  录音器组件，用于语音录制
 
 ### Layout Components | 布局组件
 
