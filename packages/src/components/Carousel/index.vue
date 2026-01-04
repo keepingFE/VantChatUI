@@ -23,6 +23,7 @@
         <div v-if="showIndicators" class="chat-carousel__indicators">
             <span v-for="(item, index) in items" :key="index" class="chat-carousel__indicator"
                 :class="{ 'chat-carousel__indicator--active': index === currentIndex }"
+                :style="index === currentIndex ? { ...indicatorStyle, ...indicatorActiveStyle } : indicatorStyle"
                 @click="goToSlide(index)"></span>
         </div>
     </div>
@@ -55,6 +56,22 @@ const props = defineProps({
     gap: {
         type: Number,
         default: 0
+    },
+    indicatorColor: {
+        type: String,
+        default: '#dcdee0'
+    },
+    indicatorActiveColor: {
+        type: String,
+        default: '#1989fa'
+    },
+    indicatorSize: {
+        type: Number,
+        default: 6
+    },
+    indicatorActiveWidth: {
+        type: Number,
+        default: 16
     }
 });
 
@@ -67,11 +84,16 @@ const touchCurrentX = ref(0);
 const isDragging = ref(false);
 let autoplayTimer = null;
 
+const getContainerWidth = () => {
+    return containerRef.value ? containerRef.value.offsetWidth : window.innerWidth;
+};
+
 const trackStyle = computed(() => {
-    const itemWidthValue = props.itemWidth === '100%' ? window.innerWidth : parseInt(props.itemWidth);
+    const containerWidth = getContainerWidth();
+    const itemWidthValue = props.itemWidth === '100%' ? containerWidth : parseInt(props.itemWidth);
     const offset = isDragging.value
-        ? -(currentIndex.value * (itemWidthValue + props.gap)) + (touchCurrentX.value - touchStartX.value)
-        : -(currentIndex.value * (itemWidthValue + props.gap));
+        ? -(currentIndex.value * itemWidthValue) + (touchCurrentX.value - touchStartX.value)
+        : -(currentIndex.value * itemWidthValue);
 
     return {
         transform: `translateX(${offset}px)`,
@@ -80,15 +102,25 @@ const trackStyle = computed(() => {
 });
 
 const itemStyle = computed(() => {
-    if (props.gap > 0) {
-        return {
-            width: props.itemWidth === '100%' ? `calc(100% - ${props.gap}px)` : props.itemWidth,
-            marginRight: `${props.gap}px`
-        };
-    }
     return {
         width: props.itemWidth,
-        marginRight: `${props.gap}px`
+        paddingRight: `${props.gap}px`
+    };
+});
+
+const indicatorStyle = computed(() => {
+    return {
+        width: `${props.indicatorSize}px`,
+        height: `${props.indicatorSize}px`,
+        borderRadius: `${props.indicatorSize / 2}px`,
+        backgroundColor: props.indicatorColor
+    };
+});
+
+const indicatorActiveStyle = computed(() => {
+    return {
+        width: `${props.indicatorActiveWidth}px`,
+        backgroundColor: props.indicatorActiveColor
     };
 });
 
@@ -203,6 +235,7 @@ defineExpose({
     flex-shrink: 0;
     cursor: pointer;
     user-select: none;
+    box-sizing: border-box;
 }
 
 .chat-carousel__default-item {
@@ -262,16 +295,7 @@ defineExpose({
 }
 
 .chat-carousel__indicator {
-    width: 6px;
-    height: 6px;
-    border-radius: 3px;
-    background-color: #dcdee0;
     cursor: pointer;
     transition: all 0.3s;
-}
-
-.chat-carousel__indicator--active {
-    width: 16px;
-    background-color: #1989fa;
 }
 </style>

@@ -94,26 +94,51 @@ const handleClose = () => {
 
 <style scoped>
 .chat-action-sheet {
-    padding: 8px 0;
+    padding: 12px 0;
 }
 
 .chat-action-sheet__item {
     display: flex;
     align-items: center;
-    padding: 14px 16px;
+    padding: 16px 20px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.chat-action-sheet__item::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(102, 126, 234, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.chat-action-sheet__item:active::before {
+    width: 500px;
+    height: 500px;
+}
+
+.chat-action-sheet__item:hover {
+    background: linear-gradient(90deg, transparent 0%, rgba(102, 126, 234, 0.05) 50%, transparent 100%);
 }
 
 .chat-action-sheet__item:active {
-    background-color: #f7f8fa;
+    background-color: rgba(102, 126, 234, 0.08);
 }
 
 .chat-action-sheet__item--disabled {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
 }
 
+.chat-action-sheet__item--disabled:hover,
 .chat-action-sheet__item--disabled:active {
     background-color: transparent;
 }
@@ -122,28 +147,38 @@ const handleClose = () => {
     cursor: not-allowed;
 }
 
+.chat-action-sheet__item--loading:hover,
 .chat-action-sheet__item--loading:active {
     background-color: transparent;
 }
 
 .chat-action-sheet__icon {
-    margin-right: 12px;
-    font-size: 20px;
+    margin-right: 14px;
+    font-size: 22px;
+    position: relative;
+    z-index: 1;
 }
 
 .chat-action-sheet__name {
     flex: 1;
     font-size: 16px;
-    color: #323233;
+    font-weight: 500;
+    color: #2c3e50;
+    position: relative;
+    z-index: 1;
 }
 
 .chat-action-sheet__subname {
-    margin-left: 8px;
-    font-size: 12px;
-    color: #969799;
+    margin-left: 10px;
+    font-size: 13px;
+    color: #8c8c8c;
+    position: relative;
+    z-index: 1;
 }
 
 .chat-action-sheet__loading {
-    margin-left: 8px;
+    margin-left: 10px;
+    position: relative;
+    z-index: 1;
 }
 </style>

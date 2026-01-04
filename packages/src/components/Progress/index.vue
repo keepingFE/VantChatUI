@@ -102,17 +102,33 @@ const pivotText = computed(() => {
     position: relative;
     border-radius: 999px;
     overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .chat-progress__inner {
     position: relative;
     height: 100%;
     border-radius: 999px;
-    transition: width 0.3s ease;
+    background: linear-gradient(135deg, #1989fa 0%, #0e6ecd 100%);
+    box-shadow: 0 2px 8px rgba(25, 137, 250, 0.3);
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.chat-progress__inner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
 }
 
 .chat-progress__inner--animate {
-    animation: progress-active 2s ease-in-out infinite;
+    animation: progress-pulse 2s ease-in-out infinite;
 }
 
 .chat-progress__pivot {
@@ -120,31 +136,43 @@ const pivotText = computed(() => {
     top: 50%;
     right: 0;
     transform: translate(50%, -50%);
-    padding: 0 8px;
-    font-size: 10px;
-    line-height: 20px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
     border-radius: 999px;
     white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    letter-spacing: 0.3px;
 }
 
 .chat-progress__text {
-    margin-top: 8px;
+    margin-top: 10px;
     font-size: 14px;
-    color: #646566;
+    font-weight: 500;
+    color: #6c757d;
     text-align: right;
 }
 
-@keyframes progress-active {
-    0% {
-        opacity: 0.3;
-    }
+@keyframes progress-pulse {
 
-    50% {
+    0%,
+    100% {
         opacity: 1;
     }
 
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
     100% {
-        opacity: 0.3;
+        transform: translateX(100%);
     }
 }
 </style>

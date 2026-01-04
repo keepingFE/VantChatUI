@@ -160,10 +160,10 @@ export default {
           show: false,
           pieces: [
             { gt: 0, lte: this.baseline - 10, color: "#f97316" }, // 低于基准 -> 橙色
-            { gt: this.baseline - 10, color: "#8b5cf6" }, // 正常/高 -> 紫色
+            { gt: this.baseline - 10, color: "#1989fa" }, // 正常/高 -> 蓝色
           ],
           outOfRange: {
-            color: "#8b5cf6",
+            color: "#1989fa",
           },
         },
         series: [
@@ -271,6 +271,7 @@ export default {
   display: flex;
   align-items: center;
 }
+
 .stat-eval::before {
   content: "";
   width: 6px;
@@ -282,20 +283,23 @@ export default {
 .stat-eval.great {
   color: #22c55e;
 }
+
 .stat-eval.great::before {
   background: #22c55e;
 }
 
 .stat-eval.normal {
-  color: #8b5cf6;
+  color: #1989fa;
 }
+
 .stat-eval.normal::before {
-  background: #8b5cf6;
+  background: #1989fa;
 }
 
 .stat-eval.tired {
   color: #f97316;
 }
+
 .stat-eval.tired::before {
   background: #f97316;
 }
@@ -303,6 +307,7 @@ export default {
 .stat-eval.stress {
   color: #ef4444;
 }
+
 .stat-eval.stress::before {
   background: #ef4444;
 }

@@ -256,7 +256,7 @@ export default {
 
 .duration-badge {
     padding: 6px 12px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1989fa 0%, #0e6ecd 100%);
     color: #fff;
     border-radius: 16px;
     font-size: 13px;
@@ -316,7 +316,7 @@ export default {
 
 .zone-item.active {
     background: #e0e7ff;
-    border: 2px solid #667eea;
+    border: 2px solid #1989fa;
 }
 
 .zone-indicator {

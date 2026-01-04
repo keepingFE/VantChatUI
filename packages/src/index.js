@@ -120,6 +120,18 @@ export { default as Progress } from "./components/Progress/index.vue";
 export { default as Stepper } from "./components/Stepper/index.vue";
 export { default as Switch } from "./components/Switch/index.vue";
 
+// 新增通用组件（对标阿里 ChatUI）
+export { default as Tabs } from "./components/Tabs/index.vue";
+export { default as TabPane } from "./components/TabPane/index.vue";
+export { default as NoticeBar } from "./components/NoticeBar/index.vue";
+export { default as Radio } from "./components/Radio/index.vue";
+export { default as RadioGroup } from "./components/RadioGroup/index.vue";
+export { default as Select } from "./components/Select/index.vue";
+export { default as Accordion } from "./components/Accordion/index.vue";
+export { default as AccordionItem } from "./components/AccordionItem/index.vue";
+export { default as PullToRefresh } from "./components/PullToRefresh/index.vue";
+export { default as Icon } from "./components/Icon/index.vue";
+
 // 导出 Hooks
 export { useAutoScroll } from "./hooks/useAutoScroll.js";
 export { useTypewriter } from "./hooks/useTypewriter.js";

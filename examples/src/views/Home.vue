@@ -132,6 +132,41 @@ const demos = [
     description: "开关组件，用于切换状态",
   },
   {
+    path: "/tabs",
+    title: "🆕 Tabs 标签页",
+    description: "标签页组件，支持滑动切换、粘性定位、徽标提示",
+  },
+  {
+    path: "/notice-bar",
+    title: "🆕 NoticeBar 通知栏",
+    description: "通知栏组件，支持滚动播放、可关闭、自定义样式",
+  },
+  {
+    path: "/radio",
+    title: "🆕 Radio 单选框",
+    description: "单选框组件，支持水平/垂直排列、自定义颜色和形状",
+  },
+  {
+    path: "/select",
+    title: "🆕 Select 选择器",
+    description: "选择器组件，支持自定义字段、禁用、错误提示",
+  },
+  {
+    path: "/accordion",
+    title: "🆕 Accordion 手风琴",
+    description: "手风琴折叠面板，支持手风琴模式、自定义标题和内容",
+  },
+  {
+    path: "/pull-to-refresh",
+    title: "🆕 PullToRefresh 下拉刷新",
+    description: "下拉刷新组件，支持自定义提示文案和成功提示时长",
+  },
+  {
+    path: "/icon",
+    title: "🆕 Icon 图标",
+    description: "图标组件，支持徽标提示、自定义颜色和大小",
+  },
+  {
     path: "/ai-chat",
     title: "✨ AI 综合演示 ✨",
     description: "集成 Markdown、流式输出、快捷回复的完整 AI 聊天示例",

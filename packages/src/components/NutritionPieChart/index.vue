@@ -334,7 +334,7 @@ export default {
 
 /* 营养总结卡片 */
 .summary-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1989fa 0%, #0e6ecd 100%);
     border-radius: 12px;
     padding: 16px;
     color: #fff;

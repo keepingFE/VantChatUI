@@ -211,11 +211,11 @@ export default {
                     symbolSize: 6,
                     lineStyle: {
                         width: 2,
-                        color: '#a78bfa',
+                        color: '#1989fa',
                         type: 'dashed'
                     },
                     itemStyle: {
-                        color: '#a78bfa'
+                        color: '#1989fa'
                     },
                     // BMI健康范围标识
                     markArea: {
@@ -324,7 +324,7 @@ export default {
                         type: 'value',
                         name: 'BMI',
                         nameTextStyle: {
-                            color: '#a78bfa',
+                            color: '#1989fa',
                             fontSize: 12
                         },
                         min: 16,
@@ -336,7 +336,7 @@ export default {
                             show: false
                         },
                         axisLabel: {
-                            color: '#a78bfa',
+                            color: '#1989fa',
                             fontSize: 12
                         },
                         splitLine: {

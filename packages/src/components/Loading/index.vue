@@ -152,9 +152,40 @@ watch(visible, (newVal) => {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.85) 100%);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: loading-fade-in 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    :deep(.van-loading) {
+        filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.6));
+    }
+
+    :deep(.van-loading__text) {
+        color: #ffffff;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+    }
 }
 
 .cv-loading-text {
     text-align: center;
+    color: #ffffff;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+@keyframes loading-fade-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 </style>

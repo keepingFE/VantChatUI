@@ -120,7 +120,7 @@ export default {
 
             const colors = {
                 common: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
-                rare: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                rare: 'linear-gradient(135deg, #1989fa 0%, #0e6ecd 100%)',
                 epic: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
                 legendary: 'linear-gradient(135deg, #ffd89b 0%, #19547b 100%)'
             };
@@ -273,7 +273,7 @@ export default {
 
 .progress-ring-fill {
     fill: none;
-    stroke: #667eea;
+    stroke: #1989fa;
     stroke-width: 4;
     stroke-linecap: round;
     transition: stroke-dashoffset 0.5s ease;
@@ -321,7 +321,7 @@ export default {
 
 .progress-text {
     font-size: 12px;
-    color: #667eea;
+    color: #1989fa;
     font-weight: 600;
     margin-top: 6px;
 }
@@ -351,7 +351,7 @@ export default {
 }
 
 .rarity-tag.rare {
-    background: #667eea;
+    background: #1989fa;
 }
 
 .rarity-tag.epic {

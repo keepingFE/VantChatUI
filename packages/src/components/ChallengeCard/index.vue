@@ -113,7 +113,7 @@ export default {
         },
         iconColor: {
             type: String,
-            default: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+            default: 'linear-gradient(135deg, #1989fa 0%, #0e6ecd 100%)'
         },
         category: {
             type: String,
@@ -188,7 +188,7 @@ export default {
             if (this.status === 'failed') return 'linear-gradient(90deg, #ff3b30 0%, #ff453a 100%)';
             if (this.progressPercentage >= 80) return 'linear-gradient(90deg, #34c759 0%, #30d158 100%)';
             if (this.progressPercentage >= 50) return 'linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%)';
-            return 'linear-gradient(90deg, #667eea 0%, #764ba2 100%)';
+            return 'linear-gradient(90deg, #1989fa 0%, #0e6ecd 100%)';
         },
         statusText() {
             const texts = {
@@ -532,7 +532,7 @@ export default {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1989fa 0%, #0e6ecd 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -597,7 +597,7 @@ export default {
 }
 
 .btn-start {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1989fa 0%, #0e6ecd 100%);
 }
 
 .btn-continue {

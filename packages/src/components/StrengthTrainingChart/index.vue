@@ -208,7 +208,7 @@ export default {
     align-items: center;
     gap: 6px;
     padding: 8px 14px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1989fa 0%, #0e6ecd 100%);
     border-radius: 20px;
     color: #fff;
     font-size: 13px;
@@ -264,7 +264,7 @@ export default {
 .exercise-muscle {
     font-size: 12px;
     color: #fff;
-    background: #667eea;
+    background: #1989fa;
     padding: 4px 10px;
     border-radius: 12px;
 }

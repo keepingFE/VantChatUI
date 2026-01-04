@@ -38,6 +38,12 @@
                 <div class="demo-title">隐藏指示器</div>
                 <Carousel :items="products" :show-indicators="false" />
             </div>
+
+            <div class="demo-section">
+                <div class="demo-title">自定义指示器样式</div>
+                <Carousel :items="products" :indicator-color="'#ffd93d'" :indicator-active-color="'#ff6b6b'"
+                    :indicator-size="8" :indicator-active-width="24" />
+            </div>
         </div>
     </div>
 </template>

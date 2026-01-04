@@ -69,7 +69,7 @@ export default {
                 'fasting': { label: '空腹', color: '#3b82f6' },
                 'before_meal': { label: '餐前', color: '#10b981' },
                 'after_meal': { label: '餐后', color: '#f59e0b' },
-                'other': { label: '随机', color: '#8b5cf6' }
+                'other': { label: '随机', color: '#1989fa' }
             }
         };
     },
@@ -188,7 +188,7 @@ export default {
                         const originalData = this.sugarData[dataIndex];
                         const typeInfo = this.typeMap[originalData.type];
                         const status = this.judgeStatus(originalData.value, originalData.type);
-                        
+
                         return `
                             <div style="font-size: 12px;">
                                 <div style="color: #666; margin-bottom: 4px;">${originalData.date}</div>

@@ -39,6 +39,8 @@ ChatVant 是一个基于 **Vue 3** 和 **Vant 4** 构建的轻量级、移动优
   反馈按钮组件，用于消息评分
 - **RegenerateButton**: Regenerate button component for AI response regeneration  
   重新生成按钮组件，用于 AI 回复重新生成
+- **Bubble**: Bubble component for chat-like bubble displays  
+  气泡组件，用于聊天式气泡展示
 
 ### Status Indicators | 状态指示器
 
@@ -57,6 +59,12 @@ ChatVant 是一个基于 **Vue 3** 和 **Vant 4** 构建的轻量级、移动优
   输入框组件，提供基础的文本输入功能
 - **Search**: Search box component with search input and functionality  
   搜索框组件，提供搜索输入和搜索功能
+- **Select**: Select dropdown component for option selection  
+  下拉选择组件，用于选项选择
+- **Radio**: Radio button component for single choice selection  
+  单选按钮组件，用于单选
+- **RadioGroup**: Radio group component for managing multiple radio buttons  
+  单选按钮组组件，用于管理多个单选按钮
 
 ### Basic UI Components | 基础 UI 组件
 
@@ -70,6 +78,10 @@ ChatVant 是一个基于 **Vue 3** 和 **Vant 4** 构建的轻量级、移动优
   文件卡片组件，用于显示文件信息（文件名、大小、类型等）
 - **Image**: Image component with preview and loading state support  
   图片组件，支持预览、加载状态等功能
+- **Icon**: Icon component for displaying various icons  
+  图标组件，用于显示各种图标
+- **Text**: Text component for displaying formatted text  
+  文本组件，用于显示格式化文本
 - **Checkbox**: Checkbox component for single option selection  
   复选框组件，用于单个选项的选择
 - **CheckboxGroup**: Checkbox group component for managing multiple checkboxes  
@@ -84,6 +96,8 @@ ChatVant 是一个基于 **Vue 3** 和 **Vant 4** 构建的轻量级、移动优
   浮动操作按钮组件
 - **Waterfall**: Waterfall layout component for image galleries  
   瀑布流布局组件，用于图片画廊展示
+- **Gallery**: Gallery component for image browsing and preview  
+  画廊组件，用于图片浏览和预览
 - **MarkdownRenderer**: Markdown content renderer component  
   Markdown 内容渲染器组件
 - **ChunkUploader**: Chunk file uploader component for large files  
@@ -106,8 +120,6 @@ ChatVant 是一个基于 **Vue 3** 和 **Vant 4** 构建的轻量级、移动优
   开关组件，用于切换开关状态
 - **Time**: Time display component for formatting and showing time  
   时间显示组件，用于格式化和显示时间
-- **Bubble**: Bubble component for chat-like bubble displays  
-  气泡组件，用于聊天式气泡展示
 - **Carousel**: Carousel component for image or content sliding  
   轮播图组件，用于图片或内容滑动展示
 - **ActionSheet**: Action sheet component for bottom action menus  
@@ -118,18 +130,32 @@ ChatVant 是一个基于 **Vue 3** 和 **Vant 4** 构建的轻量级、移动优
   弹出层组件，用于灵活的弹出展示
 - **Toast**: Toast notification component for brief messages  
   轻提示组件，用于简短消息提示
+- **NoticeBar**: Notice bar component for displaying important notifications  
+  通知栏组件，用于显示重要通知
 - **Navbar**: Navigation bar component for page headers  
   导航栏组件，用于页面头部导航
 - **Toolbar**: Toolbar component for action buttons and tools  
   工具栏组件，用于操作按钮和工具集合
+- **Tabs**: Tabs component for tabbed navigation  
+  标签页组件，用于标签页导航
+- **TabPane**: Tab pane component as content container for tabs  
+  标签页面板组件，作为标签页的内容容器
+- **Accordion**: Accordion component for collapsible content sections  
+  手风琴组件，用于可折叠的内容区域
+- **AccordionItem**: Accordion item component as individual collapsible section  
+  手风琴项组件，作为单个可折叠区域
 - **List**: List component for displaying data in list format  
   列表组件，用于以列表格式展示数据
 - **ScrollView**: Scroll view component for scrollable content areas  
   滚动视图组件，用于可滚动内容区域
 - **InfiniteScroll**: Infinite scroll component for loading more content  
   无限滚动组件，用于加载更多内容
+- **PullToRefresh**: Pull to refresh component for refreshing content  
+  下拉刷新组件，用于刷新内容
 - **RichText**: Rich text display component for formatted text rendering  
   富文本显示组件，用于格式化文本渲染
+- **Form**: Form component for form layout and validation  
+  表单组件，用于表单布局和验证
 - **Recorder**: Audio recorder component for voice recording  
   录音器组件，用于语音录制
 
@@ -264,8 +290,12 @@ ChatVant 是一个基于 **Vue 3** 和 **Vant 4** 构建的轻量级、移动优
 
 ### Media Components | 媒体组件
 
+- **Video**: Video component for basic video display  
+  视频组件，用于基础视频展示
 - **VideoPlayer**: Video player component with full playback controls, fullscreen support, and responsive design  
   视频播放器组件，支持完整的播放控制、全屏功能和响应式设计
+- **Audio**: Audio component for basic audio playback  
+  音频组件，用于基础音频播放
 - **AudioPlayer**: Audio player component with cover art, playback controls, and customizable theme  
   音频播放器组件，支持封面图、播放控制和自定义主题
 - **AudioWaveform**: Audio waveform component for audio visualization  

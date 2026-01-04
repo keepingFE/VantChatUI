@@ -104,7 +104,8 @@ const handleClose = () => {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%);
+    backdrop-filter: blur(4px);
     z-index: 2000;
 }
 
@@ -117,65 +118,106 @@ const handleClose = () => {
 }
 
 .chat-modal__content {
-    width: 320px;
+    width: 340px;
     max-width: 90vw;
-    background-color: #fff;
-    border-radius: 12px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 20px;
     overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .chat-modal__header {
-    padding: 20px 24px 12px;
+    padding: 24px 24px 12px;
 }
 
 .chat-modal__title {
-    font-size: 16px;
-    font-weight: 500;
-    color: #323233;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
     text-align: center;
+    letter-spacing: 0.5px;
 }
 
 .chat-modal__body {
-    padding: 12px 24px 20px;
-    font-size: 14px;
-    color: #646566;
+    padding: 20px 24px 24px;
+    font-size: 15px;
+    color: #495057;
     text-align: center;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .chat-modal__footer {
     display: flex;
-    border-top: 1px solid #ebedf0;
+    gap: 12px;
+    padding: 0 16px 16px;
 }
 
 .chat-modal__button {
     flex: 1;
-    height: 48px;
+    height: 44px;
     border: none;
-    background-color: transparent;
+    border-radius: 12px;
     font-size: 16px;
+    font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
 }
 
-.chat-modal__button:active {
-    background-color: #f2f3f5;
+.chat-modal__button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.chat-modal__button:active::before {
+    width: 300px;
+    height: 300px;
 }
 
 .chat-modal__button--cancel {
-    color: #646566;
-    border-right: 1px solid #ebedf0;
+    background: #e9ecef;
+    color: #6c757d;
+}
+
+.chat-modal__button--cancel:hover {
+    background: #dee2e6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.chat-modal__button--cancel:active {
+    transform: translateY(0);
 }
 
 .chat-modal__button--confirm {
-    color: #1989fa;
-    font-weight: 500;
+    background: linear-gradient(135deg, #1989fa 0%, #0e6ecd 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(25, 137, 250, 0.4);
+}
+
+.chat-modal__button--confirm:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.5);
+}
+
+.chat-modal__button--confirm:active {
+    transform: translateY(0);
 }
 
 /* Transitions */
 .modal-overlay-enter-active,
 .modal-overlay-leave-active {
-    transition: opacity 0.3s;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-overlay-enter-from,
@@ -183,14 +225,21 @@ const handleClose = () => {
     opacity: 0;
 }
 
-.modal-enter-active,
-.modal-leave-active {
-    transition: all 0.3s;
+.modal-enter-active {
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.modal-enter-from,
+.modal-leave-active {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-enter-from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7) rotateX(10deg);
+}
+
 .modal-leave-to {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.8);
+    transform: translate(-50%, -50%) scale(0.9);
 }
 </style>

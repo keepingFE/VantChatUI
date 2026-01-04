@@ -101,6 +101,13 @@ import VideoMessageDemo from "../views/VideoDemo.vue";
 import AudioMessageDemo from "../views/AudioDemo.vue";
 import TextMessageDemo from "../views/TextDemo.vue";
 import FormDemo from "../views/FormDemo.vue";
+import TabsDemo from "../views/TabsDemo.vue";
+import NoticeBarDemo from "../views/NoticeBarDemo.vue";
+import RadioDemo from "../views/RadioDemo.vue";
+import SelectDemo from "../views/SelectDemo.vue";
+import AccordionDemo from "../views/AccordionDemo.vue";
+import PullToRefreshDemo from "../views/PullToRefreshDemo.vue";
+import IconDemo from "../views/IconDemo.vue";
 
 const routes = [
   {
@@ -612,6 +619,41 @@ const routes = [
     path: "/switch",
     name: "SwitchDemo",
     component: SwitchDemo,
+  },
+  {
+    path: "/tabs",
+    name: "TabsDemo",
+    component: TabsDemo,
+  },
+  {
+    path: "/notice-bar",
+    name: "NoticeBarDemo",
+    component: NoticeBarDemo,
+  },
+  {
+    path: "/radio",
+    name: "RadioDemo",
+    component: RadioDemo,
+  },
+  {
+    path: "/select",
+    name: "SelectDemo",
+    component: SelectDemo,
+  },
+  {
+    path: "/accordion",
+    name: "AccordionDemo",
+    component: AccordionDemo,
+  },
+  {
+    path: "/pull-to-refresh",
+    name: "PullToRefreshDemo",
+    component: PullToRefreshDemo,
+  },
+  {
+    path: "/icon",
+    name: "IconDemo",
+    component: IconDemo,
   },
 ];
 

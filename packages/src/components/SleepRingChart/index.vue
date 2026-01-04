@@ -50,8 +50,8 @@ export default {
         sleepData: {
             type: Array,
             default: () => [
-                { name: '深睡', value: 129, color: '#6C5CE7' },
-                { name: '浅睡', value: 143, color: '#A29BFE' },
+                { name: '深睡', value: 129, color: '#1989fa' },
+                { name: '浅睡', value: 143, color: '#4ba3fb' },
                 { name: '快速眼动', value: 62, color: '#FD79A8' },
                 { name: '清醒', value: 154, color: '#FDCB6E' }
             ]

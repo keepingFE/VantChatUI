@@ -95,15 +95,17 @@ const handleClose = () => {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%);
+    backdrop-filter: blur(4px);
     z-index: 1000;
 }
 
 .chat-popup {
     position: fixed;
-    background-color: #fff;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     z-index: 1001;
     overflow: auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .chat-popup--center {
@@ -112,7 +114,8 @@ const handleClose = () => {
     transform: translate(-50%, -50%);
     max-width: 90%;
     max-height: 90%;
-    border-radius: 8px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .chat-popup--top {
@@ -144,39 +147,47 @@ const handleClose = () => {
 }
 
 .chat-popup--round.chat-popup--top {
-    border-radius: 0 0 16px 16px;
+    border-radius: 0 0 20px 20px;
 }
 
 .chat-popup--round.chat-popup--bottom {
-    border-radius: 16px 16px 0 0;
+    border-radius: 20px 20px 0 0;
 }
 
 .chat-popup--round.chat-popup--left {
-    border-radius: 0 16px 16px 0;
+    border-radius: 0 20px 20px 0;
 }
 
 .chat-popup--round.chat-popup--right {
-    border-radius: 16px 0 0 16px;
+    border-radius: 20px 0 0 20px;
 }
 
 .chat-popup__close {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    padding: 4px;
+    top: 16px;
+    right: 16px;
+    padding: 6px;
     cursor: pointer;
     z-index: 1;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chat-popup__close:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: rotate(90deg);
 }
 
 .chat-popup__close .van-icon {
-    font-size: 18px;
-    color: #969799;
+    font-size: 20px;
+    color: #6c757d;
 }
 
 /* Transitions */
 .popup-overlay-enter-active,
 .popup-overlay-leave-active {
-    transition: opacity 0.3s;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .popup-overlay-enter-from,
@@ -184,15 +195,22 @@ const handleClose = () => {
     opacity: 0;
 }
 
-.popup-center-enter-active,
-.popup-center-leave-active {
-    transition: all 0.3s;
+.popup-center-enter-active {
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.popup-center-enter-from,
+.popup-center-leave-active {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.popup-center-enter-from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7) rotateX(10deg);
+}
+
 .popup-center-leave-to {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.8);
+    transform: translate(-50%, -50%) scale(0.9);
 }
 
 .popup-top-enter-active,
@@ -203,7 +221,7 @@ const handleClose = () => {
 .popup-left-leave-active,
 .popup-right-enter-active,
 .popup-right-leave-active {
-    transition: transform 0.3s;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .popup-top-enter-from,

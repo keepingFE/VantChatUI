@@ -115,57 +115,101 @@ watch(() => props.modelValue, (val) => {
     display: inline-flex;
     align-items: center;
     user-select: none;
+    background: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
 }
 
 .chat-stepper__minus,
 .chat-stepper__plus {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     padding: 0;
-    border: 1px solid #ebedf0;
-    background-color: #fff;
-    color: #323233;
-    font-size: 18px;
+    border: none;
+    background: #1989fa;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.chat-stepper__minus::before,
+.chat-stepper__plus::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.chat-stepper__minus:active::before,
+.chat-stepper__plus:active::before {
+    width: 100px;
+    height: 100px;
 }
 
 .chat-stepper__minus {
-    border-radius: 4px 0 0 4px;
+    border-radius: 6px 0 0 6px;
 }
 
 .chat-stepper__plus {
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 6px 6px 0;
+}
+
+.chat-stepper__minus:hover,
+.chat-stepper__plus:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(25, 137, 250, 0.4);
 }
 
 .chat-stepper__minus:active,
 .chat-stepper__plus:active {
-    background-color: #f2f3f5;
+    transform: scale(0.95);
 }
 
 .chat-stepper__button--disabled {
-    color: #c8c9cc;
-    background-color: #f7f8fa;
+    background: #e0e0e0;
+    color: #9e9e9e;
     cursor: not-allowed;
+    box-shadow: none;
+}
+
+.chat-stepper__button--disabled:hover {
+    transform: none;
+    box-shadow: none;
 }
 
 .chat-stepper__button--disabled:active {
-    background-color: #f7f8fa;
+    transform: none;
 }
 
 .chat-stepper__input {
     width: 40px;
-    height: 32px;
+    height: 28px;
     margin: 0;
-    padding: 0;
-    border: 1px solid #ebedf0;
-    border-left: none;
-    border-right: none;
+    padding: 0 6px;
+    border: none;
     background-color: #fff;
-    color: #323233;
+    color: #2c3e50;
     font-size: 14px;
+    font-weight: 500;
     text-align: center;
     -moz-appearance: textfield;
+    transition: all 0.3s;
+}
+
+.chat-stepper__input:focus {
+    outline: none;
+    background: #f8f9fa;
 }
 
 .chat-stepper__input::-webkit-outer-spin-button,
@@ -179,12 +223,15 @@ watch(() => props.modelValue, (val) => {
 }
 
 .chat-stepper--disabled {
-    opacity: 0.5;
+    opacity: 0.6;
     cursor: not-allowed;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
 .chat-stepper__icon {
     display: inline-block;
     line-height: 1;
+    position: relative;
+    z-index: 1;
 }
 </style>

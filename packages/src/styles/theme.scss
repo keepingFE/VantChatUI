@@ -1,0 +1,361 @@
+// ============================================
+// VantChatUI 设计系统主题配置
+// ============================================
+
+// 颜色系统
+// ============================================
+
+// 主色调 - Vant 默认蓝色系
+$primary-gradient: linear-gradient(135deg, #1989fa 0%, #0e6ecd 100%);
+$primary-color: #1989fa;
+$primary-dark: #0e6ecd;
+$primary-light: #4ba3fb;
+
+// 辅助色
+$success-gradient: linear-gradient(135deg, #52c41a 0%, #389e0d 100%);
+$success-color: #52c41a;
+
+$warning-gradient: linear-gradient(135deg, #faad14 0%, #d48806 100%);
+$warning-color: #faad14;
+
+$danger-gradient: linear-gradient(135deg, #ff4d4f 0%, #cf1322 100%);
+$danger-color: #ff4d4f;
+
+$info-gradient: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+$info-color: #1890ff;
+
+// 中性色
+$text-primary: #2c3e50;
+$text-secondary: #6c757d;
+$text-tertiary: #8c8c8c;
+$text-disabled: #bfbfbf;
+
+$bg-primary: #ffffff;
+$bg-secondary: #f8f9fa;
+$bg-tertiary: #e9ecef;
+
+$border-color: #dee2e6;
+$border-light: rgba(0, 0, 0, 0.06);
+
+// 阴影系统
+// ============================================
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+$shadow-xl: 0 12px 40px rgba(0, 0, 0, 0.15);
+
+// 彩色阴影
+$shadow-primary: 0 4px 12px rgba(25, 137, 250, 0.3);
+$shadow-success: 0 4px 12px rgba(82, 196, 26, 0.3);
+$shadow-warning: 0 4px 12px rgba(250, 173, 20, 0.3);
+$shadow-danger: 0 4px 12px rgba(255, 77, 79, 0.3);
+
+// 圆角系统
+// ============================================
+$radius-xs: 6px;
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+$radius-xl: 20px;
+$radius-round: 999px;
+
+// 间距系统
+// ============================================
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+$spacing-lg: 16px;
+$spacing-xl: 20px;
+$spacing-xxl: 24px;
+
+// 字体系统
+// ============================================
+$font-size-xs: 11px;
+$font-size-sm: 13px;
+$font-size-md: 15px;
+$font-size-lg: 17px;
+$font-size-xl: 19px;
+$font-size-xxl: 22px;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$line-height-tight: 1.4;
+$line-height-normal: 1.6;
+$line-height-relaxed: 1.8;
+
+// 动画系统
+// ============================================
+$transition-fast: 0.2s;
+$transition-base: 0.3s;
+$transition-slow: 0.4s;
+
+$ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+$ease-out: cubic-bezier(0, 0, 0.2, 1);
+$ease-in: cubic-bezier(0.4, 0, 1, 1);
+$ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+// Z-index 层级
+// ============================================
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+$z-index-toast: 9999;
+
+// Mixins
+// ============================================
+
+// 渐变背景
+@mixin gradient-bg($gradient) {
+  background: $gradient;
+}
+
+// 阴影
+@mixin shadow($shadow) {
+  box-shadow: $shadow;
+}
+
+// 圆角
+@mixin radius($radius) {
+  border-radius: $radius;
+}
+
+// 过渡动画
+@mixin transition($property: all, $duration: $transition-base, $timing: $ease-in-out) {
+  transition: $property $duration $timing;
+}
+
+// 悬停效果
+@mixin hover-lift {
+  @include transition(all, $transition-base, $ease-in-out);
+  
+  &:hover {
+    transform: translateY(-2px);
+    @include shadow($shadow-lg);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// 波纹效果
+@mixin ripple-effect {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  
+  &:active::before {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+// 毛玻璃效果
+@mixin glass-effect($opacity: 0.8) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+// 渐变文字
+@mixin gradient-text($gradient) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// 截断文本
+@mixin text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 多行截断
+@mixin text-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// 居中
+@mixin center-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// 绝对居中
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// 全屏覆盖
+@mixin full-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+// 清除浮动
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+// 隐藏滚动条
+@mixin hide-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+// 自定义滚动条
+@mixin custom-scrollbar($width: 8px, $track-color: #f1f1f1, $thumb-color: #888) {
+  &::-webkit-scrollbar {
+    width: $width;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+    border-radius: $radius-sm;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: $radius-sm;
+    
+    &:hover {
+      background: darken($thumb-color, 10%);
+    }
+  }
+}
+
+// 动画关键帧
+// ============================================
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

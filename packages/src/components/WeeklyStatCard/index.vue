@@ -91,7 +91,7 @@ export default {
                     unit: '步',
                     change: '比上周 +12%',
                     icon: '👟',
-                    color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    color: 'linear-gradient(135deg, #1989fa 0%, #0e6ecd 100%)',
                     changeClass: 'positive'
                 },
                 {
