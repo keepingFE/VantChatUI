@@ -1,6 +1,6 @@
 <template>
-    <div class="demo-container">
-        <van-nav-bar title="挑战卡片" left-arrow @click-left="$router.back()" fixed placeholder />
+    <div class="demo-page">
+        <Navbar title="挑战卡片" @back="$router.back()" />
 
         <div class="demo-content">
             <div class="demo-header">
@@ -75,12 +75,18 @@
 </template>
 
 <script>
-import { ChallengeCard } from '../../../packages/src/index.js';
+import { ChallengeCard, Navbar } from '../../../packages/src/index.js';
+import { useRouter } from 'vue-router';
 
 export default {
     name: 'ChallengeCardDemo',
     components: {
-        ChallengeCard
+        ChallengeCard,
+        Navbar
+    },
+    setup() {
+        const $router = useRouter();
+        return { $router };
     },
     methods: {
         handleCardClick(data) {
@@ -97,37 +103,30 @@ export default {
 </script>
 
 <style scoped>
-.demo-container {
+.demo-page {
     min-height: 100vh;
-    height: 100vh;
     background-color: #f7f8fa;
+}
+
+.demo-content {
+    padding: 56px 16px 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    max-height: calc(100vh - 56px);
     overflow-y: auto;
-    overflow-x: hidden;
-    position: relative;
 }
 
-.demo-container :deep(.van-nav-bar) {
-    z-index: 999;
-}
-
-.demo-container::-webkit-scrollbar {
+.demo-content::-webkit-scrollbar {
     width: 6px;
 }
 
-.demo-container::-webkit-scrollbar-thumb {
+.demo-content::-webkit-scrollbar-thumb {
     background-color: #dbdbdb;
     border-radius: 3px;
 }
 
-.demo-container::-webkit-scrollbar-track {
+.demo-content::-webkit-scrollbar-track {
     background-color: transparent;
-}
-
-.demo-content {
-    padding: 16px;
-    max-width: 800px;
-    margin: 0 auto;
-    padding-bottom: 40px;
 }
 
 .demo-header {

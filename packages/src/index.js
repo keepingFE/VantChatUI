@@ -60,6 +60,7 @@ export { default as ECGChart } from "./components/ECGChart/index.vue";
 export { default as MarkdownRenderer } from "./components/MarkdownRenderer/index.vue";
 export { default as MessageActions } from "./components/MessageActions/index.vue";
 export { default as QuickReplies } from "./components/QuickReplies/index.vue";
+export { default as Avatar } from "./components/Avatar/index.vue";
 export { default as ErrorMessage } from "./components/ErrorMessage/index.vue";
 export { default as RegenerateButton } from "./components/RegenerateButton/index.vue";
 export { default as FeedbackButton } from "./components/FeedbackButton/index.vue";
@@ -82,6 +83,37 @@ export { default as AchievementBadge } from "./components/AchievementBadge/index
 export { default as ChallengeCard } from "./components/ChallengeCard/index.vue";
 export { default as VideoPlayer } from "./components/VideoPlayer/index.vue";
 export { default as AudioPlayer } from "./components/AudioPlayer/index.vue";
+
+// 新增高优先级组件
+export { default as Navbar } from "./components/Navbar/index.vue";
+export { default as Modal } from "./components/Modal/index.vue";
+export { default as Popup } from "./components/Popup/index.vue";
+export { default as Time } from "./components/Time/index.vue";
+export { default as Empty } from "./components/Empty/index.vue";
+export { default as Recorder } from "./components/Recorder/index.vue";
+export { default as EmojiPicker } from "./components/EmojiPicker/index.vue";
+export { default as Toast } from "./components/Toast/index.js";
+
+// 新增中优先级组件
+export { default as Carousel } from "./components/Carousel/index.vue";
+export { default as List } from "./components/List/index.vue";
+export { default as ActionSheet } from "./components/ActionSheet/index.vue";
+export { default as Badge } from "./components/Badge/index.vue";
+export { default as InfiniteScroll } from "./components/InfiniteScroll/index.vue";
+
+// 新增基础布局和消息组件
+export { default as Divider } from "./components/Divider/index.vue";
+export { default as ScrollView } from "./components/ScrollView/index.vue";
+export { default as Toolbar } from "./components/Toolbar/index.vue";
+export { default as RichText } from "./components/RichText/index.vue";
+export { default as Bubble } from "./components/Bubble/index.vue";
+
+// 新增实用组件
+export { default as Skeleton } from "./components/Skeleton/index.vue";
+export { default as Tag } from "./components/Tag/index.vue";
+export { default as Progress } from "./components/Progress/index.vue";
+export { default as Stepper } from "./components/Stepper/index.vue";
+export { default as Switch } from "./components/Switch/index.vue";
 
 // 导出 Hooks
 export { useAutoScroll } from "./hooks/useAutoScroll.js";

@@ -17,6 +17,121 @@ const router = useRouter();
 
 const demos = [
   {
+    path: "/navbar",
+    title: "🆕 Navbar 导航栏",
+    description: "聊天界面顶部导航栏，支持返回、标题、操作按钮",
+  },
+  {
+    path: "/modal",
+    title: "🆕 Modal 模态对话框",
+    description: "模态对话框，确认、提示、自定义内容",
+  },
+  {
+    path: "/popup",
+    title: "🆕 Popup 弹出层",
+    description: "弹出层组件，支持上下左右中五个方向弹出",
+  },
+  {
+    path: "/toast",
+    title: "🆕 Toast 轻提示",
+    description: "轻量级提示组件，成功、失败、警告、加载状态",
+  },
+  {
+    path: "/time",
+    title: "🆕 Time 时间显示",
+    description: "智能时间格式化，相对时间、自动更新",
+  },
+  {
+    path: "/empty",
+    title: "🆕 Empty 空状态",
+    description: "空状态占位组件，无数据、无消息提示",
+  },
+  {
+    path: "/recorder",
+    title: "🆕 Recorder 语音录制",
+    description: "语音录制组件，按住录音、松开发送",
+  },
+  {
+    path: "/emoji-picker",
+    title: "🆕 EmojiPicker 表情选择器",
+    description: "表情选择器，分类展示、最近使用",
+  },
+  {
+    path: "/carousel",
+    title: "🆕 Carousel 轮播卡片",
+    description: "轮播卡片组件，支持滑动、自动播放、自定义内容",
+  },
+  {
+    path: "/list",
+    title: "🆕 List 列表消息",
+    description: "列表消息组件，支持头像、徽章、自定义内容",
+  },
+  {
+    path: "/action-sheet",
+    title: "🆕 ActionSheet 动作面板",
+    description: "动作面板组件，支持图标、禁用、加载状态",
+  },
+  {
+    path: "/badge",
+    title: "🆕 Badge 徽章",
+    description: "徽章组件，支持数字、小红点、自定义颜色和位置",
+  },
+  {
+    path: "/infinite-scroll",
+    title: "🆕 InfiniteScroll 无限滚动",
+    description: "无限滚动组件，支持上拉加载、错误重试",
+  },
+  {
+    path: "/divider",
+    title: "🆕 Divider 分割线",
+    description: "分割线组件，支持文字、虚线、垂直分割",
+  },
+  {
+    path: "/scroll-view",
+    title: "🆕 ScrollView 滚动视图",
+    description: "滚动视图容器，支持下拉刷新、上拉加载",
+  },
+  {
+    path: "/toolbar",
+    title: "🆕 Toolbar 工具栏",
+    description: "工具栏组件，支持顶部和底部固定",
+  },
+  {
+    path: "/rich-text",
+    title: "🆕 RichText 富文本",
+    description: "富文本消息组件，安全的 HTML 内容渲染",
+  },
+  {
+    path: "/bubble",
+    title: "🆕 Bubble 气泡",
+    description: "独立的气泡组件，灵活的消息容器",
+  },
+  {
+    path: "/skeleton",
+    title: "🆕 Skeleton 骨架屏",
+    description: "加载占位组件，提升用户体验",
+  },
+  {
+    path: "/tag",
+    title: "🆕 Tag 标签",
+    description: "标签组件，用于标记和分类",
+  },
+  {
+    path: "/progress",
+    title: "🆕 Progress 进度条",
+    description: "进度条组件，展示操作进度",
+  },
+  {
+    path: "/stepper",
+    title: "🆕 Stepper 步进器",
+    description: "步进器组件，用于数值调整",
+  },
+  {
+    path: "/switch",
+    title: "🆕 Switch 开关",
+    description: "开关组件，用于切换状态",
+  },
+  {
     path: "/ai-chat",
     title: "✨ AI 综合演示 ✨",
     description: "集成 Markdown、流式输出、快捷回复的完整 AI 聊天示例",

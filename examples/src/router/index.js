@@ -73,6 +73,29 @@ import AchievementBadgeDemo from "../views/AchievementBadgeDemo.vue";
 import ChallengeCardDemo from "../views/ChallengeCardDemo.vue";
 import VideoPlayerDemo from "../views/VideoPlayerDemo.vue";
 import AudioPlayerDemo from "../views/AudioPlayerDemo.vue";
+import NavbarDemo from "../views/NavbarDemo.vue";
+import ModalDemo from "../views/ModalDemo.vue";
+import PopupDemo from "../views/PopupDemo.vue";
+import ToastDemo from "../views/ToastDemo.vue";
+import TimeDemo from "../views/TimeDemo.vue";
+import EmptyDemo from "../views/EmptyDemo.vue";
+import RecorderDemo from "../views/RecorderDemo.vue";
+import EmojiPickerDemo from "../views/EmojiPickerDemo.vue";
+import CarouselDemo from "../views/CarouselDemo.vue";
+import ListDemo from "../views/ListDemo.vue";
+import ActionSheetDemo from "../views/ActionSheetDemo.vue";
+import BadgeDemo from "../views/BadgeDemo.vue";
+import InfiniteScrollDemo from "../views/InfiniteScrollDemo.vue";
+import DividerDemo from "../views/DividerDemo.vue";
+import ScrollViewDemo from "../views/ScrollViewDemo.vue";
+import ToolbarDemo from "../views/ToolbarDemo.vue";
+import RichTextDemo from "../views/RichTextDemo.vue";
+import BubbleDemo from "../views/BubbleDemo.vue";
+import SkeletonDemo from "../views/SkeletonDemo.vue";
+import TagDemo from "../views/TagDemo.vue";
+import ProgressDemo from "../views/ProgressDemo.vue";
+import StepperDemo from "../views/StepperDemo.vue";
+import SwitchDemo from "../views/SwitchDemo.vue";
 
 const routes = [
   {
@@ -444,6 +467,121 @@ const routes = [
     path: "/audio-player",
     name: "AudioPlayerDemo",
     component: AudioPlayerDemo,
+  },
+  {
+    path: "/navbar",
+    name: "NavbarDemo",
+    component: NavbarDemo,
+  },
+  {
+    path: "/modal",
+    name: "ModalDemo",
+    component: ModalDemo,
+  },
+  {
+    path: "/popup",
+    name: "PopupDemo",
+    component: PopupDemo,
+  },
+  {
+    path: "/toast",
+    name: "ToastDemo",
+    component: ToastDemo,
+  },
+  {
+    path: "/time",
+    name: "TimeDemo",
+    component: TimeDemo,
+  },
+  {
+    path: "/empty",
+    name: "EmptyDemo",
+    component: EmptyDemo,
+  },
+  {
+    path: "/recorder",
+    name: "RecorderDemo",
+    component: RecorderDemo,
+  },
+  {
+    path: "/emoji-picker",
+    name: "EmojiPickerDemo",
+    component: EmojiPickerDemo,
+  },
+  {
+    path: "/carousel",
+    name: "CarouselDemo",
+    component: CarouselDemo,
+  },
+  {
+    path: "/list",
+    name: "ListDemo",
+    component: ListDemo,
+  },
+  {
+    path: "/action-sheet",
+    name: "ActionSheetDemo",
+    component: ActionSheetDemo,
+  },
+  {
+    path: "/badge",
+    name: "BadgeDemo",
+    component: BadgeDemo,
+  },
+  {
+    path: "/infinite-scroll",
+    name: "InfiniteScrollDemo",
+    component: InfiniteScrollDemo,
+  },
+  {
+    path: "/divider",
+    name: "DividerDemo",
+    component: DividerDemo,
+  },
+  {
+    path: "/scroll-view",
+    name: "ScrollViewDemo",
+    component: ScrollViewDemo,
+  },
+  {
+    path: "/toolbar",
+    name: "ToolbarDemo",
+    component: ToolbarDemo,
+  },
+  {
+    path: "/rich-text",
+    name: "RichTextDemo",
+    component: RichTextDemo,
+  },
+  {
+    path: "/bubble",
+    name: "BubbleDemo",
+    component: BubbleDemo,
+  },
+  {
+    path: "/skeleton",
+    name: "SkeletonDemo",
+    component: SkeletonDemo,
+  },
+  {
+    path: "/tag",
+    name: "TagDemo",
+    component: TagDemo,
+  },
+  {
+    path: "/progress",
+    name: "ProgressDemo",
+    component: ProgressDemo,
+  },
+  {
+    path: "/stepper",
+    name: "StepperDemo",
+    component: StepperDemo,
+  },
+  {
+    path: "/switch",
+    name: "SwitchDemo",
+    component: SwitchDemo,
   },
 ];
 

@@ -200,5 +200,5 @@ defineExpose({ editor });
 </script>
 
 <style lang="scss" scoped>
-@import './styles.scss';
+@use './styles.scss';
 </style>
